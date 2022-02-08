@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  font-family: "Circe", sans-serif;
+}
+
+.settings .form-box {
+  display: flex;
+  width: 947px;
+  height: 850px;
+}
+.settings .navbar {
+  background-color: #f7f8fa;
+  width: 200px;
+  height: 850px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.settings .navbar-title {
+  padding-top: 6vh;
+  padding-left: 2vw;
+  font-weight: bold;
+  margin-bottom: 2vh;
+}
+.settings .navbar-item {
+  padding-left: 3.5vw;
+  position: relative;
+  cursor: pointer;
+  border-left: 3px solid #03A0E8;
+}
+.settings .navbar-item:before {
+  content: "";
+  background: url("../../../assets/images/bx-account.svg") no-repeat;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 1.5vw;
+}
+.settings .account {
+  margin: 5vh 0 0 3vw;
+}
+.settings .account-title {
+  font-family: "Circe ExtraBold", sans-serif;
+  font-size: 24px;
+  color: #000850;
+}
+.settings .account-profile {
+  margin-top: 1vh;
+}
+.settings .account-profile-title {
+  font-family: "Circe Bold", sans-serif;
+  color: #000850;
+}
+.settings .account-profile-photo {
+  display: flex;
+}
+.settings .account-profile-group-change {
+  margin: 1.5vh 0 0 1vw;
+}
+.settings .account-profile-btn-change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 22px;
+  border: 1px solid #03A0E8;
+  border-radius: 10px;
+  background: none;
+  width: 130px;
+  height: 40px;
+  margin-bottom: 0.5vh;
+}
+.settings .account-profile-btn-change span {
+  white-space: nowrap;
+  font-size: 16px;
+  color: #03A0E8;
+}
+.settings .account-profile-btn-change:hover {
+  background: #03A0E8;
+  cursor: pointer;
+}
+.settings .account-profile-btn-change:hover span {
+  color: white;
+}
+.settings .account-profile-btn-change-clue {
+  color: #B7B7BF;
+  font-size: 12px;
+}
+.settings .account-profile-btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 22px;
+  border: 1px solid #E44233;
+  border-radius: 10px;
+  background: none;
+  width: 100px;
+  height: 40px;
+  margin: 1.5vh 0 0 1vw;
+}
+.settings .account-profile-btn-delete span {
+  white-space: nowrap;
+  font-size: 16px;
+  color: #E44233;
+}
+.settings .account-profile-btn-delete:hover {
+  background: #E44233;
+  cursor: pointer;
+}
+.settings .account-profile-btn-delete:hover span {
+  color: white;
+}
+.settings .account-inputs {
+  display: flex;
+  margin-top: 1vh;
+}
+.settings .form-email-input {
+  width: 300px;
+}
+.settings .form-email-label {
+  margin-top: -13px;
+}
+.settings .account-password {
+  border-bottom: 1px solid #B7B7BF;
+}
+.settings .account-password-title {
+  font-family: "Circe Bold", sans-serif;
+  margin-bottom: 1vh;
+}
+.settings .btn-change {
+  width: 200px;
+  margin-bottom: 2vh;
+}
+.settings .account-delete-title {
+  font-family: "Circe Bold", sans-serif;
+  margin: 1vh 0;
+}
+.settings .btn-delete {
+  width: 200px;
+  margin: 0;
+}
+.settings .account-btn {
+  display: flex;
+  justify-content: right;
+  margin-top: 22vh;
+}
+.settings .account-btn-cancel {
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 40px;
+  border: 1px solid #03A0E8;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #03A0E8;
+  margin: 0 7px;
+  cursor: pointer;
+}
+.settings .account-btn-update {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 40px;
+  background: #03A0E8;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0 7px;
+  border: none;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Settings.css.map */

@@ -1,0 +1,100 @@
+.header-main {
+
+    width: 100vW;
+    height: 87px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+  * {
+    font-family: "Circe", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .logo{
+    width: 181px;
+    height: 45px;
+  }
+
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: 55.8vW;
+    height: 45px;
+  }
+
+  .button-container {
+    width: 26vW;
+    margin-right: 0;
+    display: flex;
+  }
+
+  .button-container button {
+    white-space: nowrap;
+    margin-right: 2vW;
+    border: 0;
+    background: none;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000850;
+    opacity: 0.7;
+  }
+
+  .button-container button:last-child {
+    margin-right: 0;
+  }
+
+  .header-grow {
+    width: 10vw;
+  }
+
+  .outlined-button {
+    background: none;
+    width: 139px;
+    height: 34px;
+    border: 1px solid #03A0E8;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #03A0E8;
+    margin: 0 11px;
+  }
+
+  .outlined-button:hover {
+    background: #0098DE;
+    color: white;
+    transition: 0.5s ease;
+  }
+
+  .main-button {
+    width: 92px;
+    height: 34px;
+    background: #03A0E8;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    margin: 0 11px;
+    border: none;
+  }
+
+  .main-button:hover {
+    background: #0098DE;
+    transition: 0.5s ease;
+  }
+
+  .header-auth-buttons {
+    display: flex;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}

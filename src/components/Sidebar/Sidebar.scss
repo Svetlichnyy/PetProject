@@ -1,0 +1,178 @@
+.sidebar{
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 8, 80, 0.75);
+  word-wrap: anywhere;
+  box-sizing: border-box;
+  width: 280px;
+  height: 100vh;
+  background: #FFF;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  padding: 24px;
+  .filter{
+    padding-top: 40px;
+    height: 50vh;
+    width: 280px;
+  }
+  .logo{
+    margin-top: 16px;
+  }
+  .category{
+    position: relative;
+    label{
+      cursor: pointer;
+    }
+    .label-click{
+      width: 198px;
+      height: 24px;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    span{
+      cursor: pointer;
+      color: #6F7D97;
+    }
+
+    .add-category{
+        margin-bottom: 14px;
+        color: #6F7D97;
+        cursor: pointer;
+    }
+  }
+  .category:after{
+    position: absolute;
+    content: '';
+    width: 232px;
+    height: 1px;
+    background: #D7D7D7;
+  }
+  .category-items{
+    list-style: none;
+    li{
+      cursor: pointer;
+      margin-bottom: 12px;
+      height: 24px;
+    }
+    input{
+      outline: none;
+      border: none;
+
+    }
+
+  }
+  .tags{
+    position: relative;
+    label{
+      cursor: pointer;
+    }
+    .label-click{
+      width: 198px;
+      height: 24px;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    span{
+      cursor: pointer;
+      color: #6F7D97;
+    }
+    margin-top: 24px;
+    .tags-list{
+    margin-top: 16px;
+      list-style: none;
+      li{
+        margin-bottom: 12px;
+        cursor: pointer;
+      }
+      input{
+        outline: none;
+        border: none;
+
+      }
+    }
+  }
+  .profile{
+    margin-top: 33vh;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+  }
+  .profile-name:focus ~ .profile-box{
+    display: inline;
+  }
+  .profile-box:focus, .profile-box:hover{
+    display: inline;
+  }
+  .profile-name{
+    margin: 1vh;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .label-click:after{
+    color: #6F7D97;
+    font-size: 24px;
+    content: '+';
+    position: absolute;
+    right: 55px;
+    top: 2px;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+  }
+  .profile-box{
+    position: absolute;
+    width: 257px;
+    height: 200px;
+    left: 0;
+    top: -210px;
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%);
+    border-radius: 10px;
+    cursor: auto;
+    display: none;
+    z-index: 2;
+  }
+  .profile-box-account{
+    display: flex;
+    border-bottom: 1px solid #B7B7BF;
+    margin: 0 10px;
+  }
+  .profile-box-img{
+    margin: 5px;
+  }
+  .profile-box-name{
+    color:#000850;
+    margin-top: 5px;
+  }
+  .profile-box-email{
+    color: #B7B7BF;
+  }
+  .profile-box-function{
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .profile-box-settings-item{
+    margin-left: 40px;
+    position: relative;
+    color: #000850;
+  }
+  .profile-box-settings, .profile-box-notifications, .profile-box-logout{
+    cursor: pointer;
+  }
+  .profile-box-settings, .profile-box-notifications{
+    margin-bottom: 15px;
+  }
+}

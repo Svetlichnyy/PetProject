@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+.container {
+    font-size: 16px;
+}
+.dropzone {
+    position: relative;
+    width : 410px;
+    height : 180px;
+    border : 1px dashed #B7B7BF;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.dropzone p{
+    font-family: "Circe Light", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.dropzone img{
+    margin-top: 15px;
+    margin-left: 160px;
+}
+.browse{
+    font-family: "Circe Light", sans-serif;
+    color: #03A0E8;
+}
+.pattern{
+    font-family: "Circe Light", sans-serif;
+    color: #9aa9bb;
+    font-size: 15px;
+    margin-left: 35px;
+}
+.dropzone-image{
+    position: absolute;
+    left: -161px;
+    top: -16px;
+}
+.dropzone-error{
+    color: red;
+    margin-bottom: 10px;
+}

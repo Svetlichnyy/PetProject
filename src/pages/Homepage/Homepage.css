@@ -1,0 +1,46 @@
+*{
+    font-family: "Circe", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vW;
+    height: 89vH;
+}
+h1{
+    font-family: "Circe ExtraBold", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 74px;
+    line-height: 74px;
+    color: #000850;
+}
+.main-image{
+    width: 50vW;
+    overflow: visible;
+}
+.main-phrase span{
+    font-family: "Circe ExtraBold", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 74px;
+    line-height: 74px;
+    color: #E44233;
+}
+.larger-button{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 22px;
+    height: 43px;
+    background: #03A0E8;
+    border-radius: 10px;
+    white-space: nowrap;
+}
