@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import "./Sidebar.css";
+import React, { useState} from 'react';
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router";
+import "./Sidebar.scss";
 import {ReactComponent as ReactLogo} from "../../assets/images/logo.svg"
 import UserTags from "../Tags/UserTags";
-import axiosApi from "../../axios/api";
 import UserCategories from "../Categories/UserCategories";
 import man from '../../assets/images/modal-laptop-man.svg'
 import {Badge} from "@material-ui/core";
@@ -17,6 +18,8 @@ import Settings from "../modals/Settings/Settings";
 
 const Sidebar = () => {
 
+    const navigate = useNavigate()
+
     const [hideTagInput, setHideTagInput] = useState(false)
     const [hideCategoryInput, setHideCategoryInput] = useState(false)
 
@@ -24,11 +27,18 @@ const Sidebar = () => {
     const handleOpenSettings = () => setOpenSettings(true);
     const handleCloseSettings = () => setOpenSettings(false);
 
+    const userInfo = useSelector(store => store.userInfo.user)
+
+    const closeAccount = () => {
+        localStorage.removeItem('userId')
+        localStorage.removeItem('token')
+        navigate('/home')
+    }
 
     return (
         <div className='sidebar'>
             <div className="logo">
-            <ReactLogo />
+                <ReactLogo />
             </div>
             <div className="filter">
                 <div className="category">
@@ -48,27 +58,29 @@ const Sidebar = () => {
                         />}
                     </ul>
                 </div>
-                    <div className="tags">
-                        <label htmlFor="addTag" onClick={() =>
-                        {setHideTagInput(!hideTagInput)
-                        }}>
-                            <div className="label-click">
-                        <span >TAGS </span>
-                            </div>
-                        </label>
-                        <ul className='tags-list'>
-                            {<UserTags
-                                setHideTagInput={setHideTagInput}
-                                hideTagInput={hideTagInput}
-                            />}
-                        </ul>
-                    </div>
+                <div className="tags">
+                    <label htmlFor="addTag" onClick={() =>
+                    {setHideTagInput(!hideTagInput)
+                    }}>
+                        <div className="label-click">
+                            <span >TAGS </span>
+                        </div>
+                    </label>
+                    <ul className='tags-list'>
+                        {<UserTags
+                            setHideTagInput={setHideTagInput}
+                            hideTagInput={hideTagInput}
+                        />}
+                    </ul>
+                </div>
             </div>
             <div className="profile">
                 <Badge color="secondary" overlap="circular" badgeContent=" " variant="dot">
                     <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
                 </Badge>
-                <button className='profile-name'>Whitney A.</button>
+                <button className='profile-name'>
+                    {userInfo.first_name} {userInfo.last_name !== undefined && userInfo.last_name[0] + '.'}
+                </button>
                 <div className='profile-box'>
                     <div className='profile-box-account'>
                         <div className='profile-box-img'>
@@ -76,10 +88,10 @@ const Sidebar = () => {
                         </div>
                         <div className='profile-box-title'>
                             <div className='profile-box-name'>
-                                Whitney A.
+                                {userInfo.first_name} {userInfo.last_name !== undefined && userInfo.last_name[0] + '.'}
                             </div>
                             <div className='profile-box-email'>
-                                Whitneya@gmail.com
+                                {userInfo.email}
                             </div>
                         </div>
                     </div>
@@ -93,7 +105,7 @@ const Sidebar = () => {
                             onClose={handleCloseSettings}
                         >
                             <>
-                                <Settings>
+                                <Settings setOpenSettings={setOpenSettings}>
                                     <CloseIcon style={{color: 'grey', position: 'absolute', right: '30px', top: '30px', cursor: 'pointer'}} onClick={handleCloseSettings}  />
                                 </Settings>
                             </>
@@ -104,7 +116,9 @@ const Sidebar = () => {
                         </div>
                         <div className='profile-box-logout'>
                             <LogoutIcon style={{color: 'grey', position: 'absolute', transform:'rotate(180deg)'}} />
-                            <span className='profile-box-settings-item'>Log out</span>
+                            <span
+                                onClick={closeAccount}
+                                className='profile-box-settings-item'>Log out</span>
                         </div>
                     </div>
                 </div>

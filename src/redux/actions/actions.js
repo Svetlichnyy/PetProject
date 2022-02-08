@@ -5,3 +5,4 @@ export const SAVE_ID = 'SAVE_ID';
 export const EDIT_TODO = 'EDIT_TODO';
 export const SET_GROUP = 'SET_GROUP';
 export const SAVE_ID_GROUP = 'SAVE_ID_GROUP';
+export const SET_USER = 'SET_USER';

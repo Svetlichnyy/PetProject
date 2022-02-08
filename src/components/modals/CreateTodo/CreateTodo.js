@@ -173,7 +173,7 @@ const CreateTodo = (props) => {
                                         value={value}
                                         onChange={(newValue) => {
                                             setValue(newValue);
-                                            console.log(value)
+
                                         }}
                                     />
                                 </LocalizationProvider>

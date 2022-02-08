@@ -14,6 +14,10 @@ import {deleteTask, editTask, fetchTasks} from "../../../redux/actions/taskActio
 
 const EditTodo = (props) => {
     const [value, setValue] = useState(new Date());
+    // const [dLine,setDLine] = useState(value);
+    // const deadLineHours = dLine.getHours()+3;
+    // const rightDeadLine =  dLine.setHours(deadLineHours)
+    // setDLine()
     const [tags, setTags] = useState(props.currentTask[0].tags);
     const Tags = useSelector((state) => state.userTag.tags)
     const Categories = useSelector((state) => state.userCategories.categories)
@@ -174,7 +178,7 @@ const EditTodo = (props) => {
                                         onChange={(newValue) => {
                                             setValue(newValue);
                                             setToDoData({...ToDoData,deadline: newValue})
-                                            console.log(value)
+                                            console.log(newValue)
                                         }}
                                     />
                                 </LocalizationProvider>
@@ -257,7 +261,7 @@ const EditTodo = (props) => {
                         <button className='main-button form-prev-todo'>
                         </button>
                         <button
-                            onClick={() => editToDo(todoId,taskList,ToDoData,props.currentTask)}
+                            onClick={() => editToDo(todoId,taskList,ToDoData)}
                             className='main-button form-next-todo'>
                             Confirm changes
                         </button>

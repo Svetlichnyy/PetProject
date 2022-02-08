@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {fetchUserInfo} from "../../redux/actions/userActionCreator";
+import {useDispatch} from "react-redux";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import './Dashboard.css'
 import TaskList from "../../components/TaskList/TaskList";
@@ -9,7 +11,13 @@ import GroupList from "../../components/GroupList/GroupList";
 
 const Dashboard = () => {
 
-    const [openAside, setOpenAside] = useState(false);
+    const [openAside, setOpenAside] = useState(false)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchUserInfo());
+    }, [dispatch]);
 
     return (
         <div className='dashboard'>

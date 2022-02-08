@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {fetchGroups} from "../../redux/actions/groupActionCreator";
 import {useDispatch, useSelector} from "react-redux";
-import './GroupList.css';
+import './GroupList.scss';
 import {Modal} from "@mui/material";
 import CreateGroup from '../modals/CreateGroup/CreateGroup'
 import Group from "../UI/Group/Group";

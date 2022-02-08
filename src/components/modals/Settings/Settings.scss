@@ -127,9 +127,16 @@
     font-family: "Circe Bold", sans-serif;
     margin-bottom: 1vh;
   }
-  .btn-change{
-    width: 200px;
-    margin-bottom: 2vh;
+  .pass-btn-cancel{
+    width: 140px;
+    margin: 0 1vw 0 0;
+  }
+  .password-buttons{
+    display: flex;
+  }
+  .pass-btn-save{
+    width: 140px;
+    margin-bottom: 3vh;
   }
   .account-delete-title{
     font-family: "Circe Bold", sans-serif;
@@ -142,7 +149,6 @@
   .account-btn{
     display: flex;
     justify-content: right;
-    margin-top: 22vh;
   }
   .account-btn-cancel{
     background: none;
@@ -171,5 +177,10 @@
     margin: 0 7px;
     border: none;
     cursor: pointer;
+  }
+  .error{
+    margin: 1vh 0 0 0.5vw;
+    padding: 0;
+    font-size: 14px;
   }
 }
