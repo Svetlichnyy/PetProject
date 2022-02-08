@@ -7,6 +7,7 @@ const NormalTime = (time) => {
     const hoursMinutes = dateNTime[1]?.split(":")
     const hours = hoursMinutes[0]
     const minutes = hoursMinutes[1]
+
     const mm = yearMonthDay[2]-1
     const dd = yearMonthDay[1];
     const ddChars = dd.split('');
@@ -25,7 +26,7 @@ const NormalTime = (time) => {
         'December'
     ];
     const normalTime = arr[mm] + " " + (ddChars[1] ? dd : ddChars[0]) + ', ' + (hours > 12 ? hours - 12 : hours) +
-        ":" + (minutes < 10 ? minutes + '0' : minutes) + (hours > 12 ? " pm" : " am")
+        ":" + (minutes) + (hours > 12 ? " pm" : " am")
     //NORMAL TIME__________________________________________________
     return (
         <>

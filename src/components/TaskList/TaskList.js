@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './TaskList.css';
+import './TaskList.scss';
 import Task from "../../components/UI/Task/Task";
 import { useDispatch, useSelector } from "react-redux";
 // import { saveTodo, selectTodoList } from '../TodoSlice'
@@ -21,7 +21,6 @@ import { fetchTasks } from '../../redux/actions/taskActionCreator';
 
 const TaskList = (props) => {
     const dispatch = useDispatch()
-    const [res, setRes] = useState([])
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -145,7 +144,6 @@ const TaskList = (props) => {
             </div>
             {
                 todoList.map(item => (
-                    // <p>{item.id}</p>
                     <Task
                         openAside={props.openAside}
                         setOpenAside={props.setOpenAside}
@@ -157,8 +155,8 @@ const TaskList = (props) => {
                         tagsTitleArray={item.tags.map(item => item.title)}
                         notificationTime={item.notificationTime}
                         deadline={item.deadline.toLocaleString()}
-                        categoryTitle={item.categoryTitle}
-                        priorityColor={item.priority.color}
+                        categoryTitle={item.category.title }
+                        priorityColor={item.priority.color }
                         done={item.done}
                         notification={item.notification}
                     />

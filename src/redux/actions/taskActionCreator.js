@@ -1,6 +1,5 @@
 import axiosApi from '../../axios/api';
 import { SAVE_ID, SET_TODOS, EDIT_TODO } from "./actions";
-import todoId from "../../components/TodoId";
 
 export function fetchTasks() {
   return async (dispatch) => {
@@ -52,21 +51,20 @@ export function editTask(todoId,todoList,ToDoData){
       })
       console.log(response)
       const newList = todoList.map((item) => {
-        if(item.id === ToDoData.id){
+        if(item.id === todoId){
           return{
-          ...item,
-          title:ToDoData.title,
-            description: ToDoData.description,
-            tagsTitleArray: [...ToDoData.tagsTitleArray],
-            notificationTime: ToDoData.notificationTime,
-            deadline: ToDoData.deadline,
-            categoryTitle: ToDoData.categoryTitle,
-            priorityColor: ToDoData.priorityColor,
-              }
+            ...item,
+            title:response.data.title,
+            description: response.data.description,
+            tags: response.data.tags,
+            notification: response.data.notification,
+            deadline: response.data.deadline,
+            category: response.data.category,
+            priority: response.data.priority,
+          }
         }
         return item;
       })
-      setUserTasks(newList);
       dispatch(setUserTasks(newList));
     }
     catch(err){

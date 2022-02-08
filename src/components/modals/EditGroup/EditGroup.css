@@ -1,0 +1,67 @@
+* {
+  font-family: "Circe", sans-serif;
+  box-sizing: border-box;
+}
+
+.edit-group .form-box {
+  width: 524px;
+  height: 360px;
+}
+.edit-group .edit-group-content {
+  margin: 10vh 0 0 3vw;
+  width: 412px;
+}
+.edit-group .edit-group-title {
+  font-family: "Circe ExtraBold", sans-serif;
+  font-size: 24px;
+  margin-bottom: 2vh;
+}
+.edit-group .form-email-label {
+  margin-top: -13px;
+}
+.edit-group .edit-group-buttons {
+  display: flex;
+  justify-content: right;
+}
+.edit-group .btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 22px;
+  border: 1px solid #E44233;
+  border-radius: 10px;
+  background: none;
+  width: 160px;
+  height: 43px;
+}
+.edit-group .btn-delete span {
+  white-space: nowrap;
+  font-size: 16px;
+  color: #E44233;
+}
+.edit-group .btn-delete:hover {
+  background: #E44233;
+  cursor: pointer;
+}
+.edit-group .btn-delete:hover span {
+  color: white;
+}
+.edit-group .btn-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 43px;
+  background: #03A0E8;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0 7px;
+  border: none;
+  cursor: pointer;
+}
+.edit-group .btn-edit span {
+  white-space: nowrap;
+}
+
+/*# sourceMappingURL=EditGroup.css.map */

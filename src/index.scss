@@ -4,7 +4,6 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: aqua;
 }
 
 code {
@@ -23,6 +22,9 @@ code {
 .tag-wrap {
   box-sizing: border-box;
   width: 256px;
+  .HashTag{
+    margin-right: 5px;
+  }
   label {
     display: none;
   }

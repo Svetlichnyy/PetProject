@@ -60,6 +60,8 @@
   }
 
   .task-category{
+    display: flex;
+    align-items: center;
     min-width: 111px;
     .icon{
       height: 24px;

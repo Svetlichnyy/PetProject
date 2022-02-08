@@ -3,7 +3,6 @@ import './Task.scss';
 import { Checkbox } from "@mui/material";
 import CircleIcon from '@mui/icons-material/Circle';
 import { useDispatch } from "react-redux";
-import { setCheck } from "../../TodoSlice";
 import { ReactComponent as HomeIcon } from "../../../assets/images/bx-color-house.svg";
 import { ReactComponent as MeetingIcon } from "../../../assets/images/bx-color-meeting.svg";
 import { ReactComponent as WorkIcon } from "../../../assets/images/bx-color-work.svg";
@@ -43,9 +42,7 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, deadline, priorityColo
     // ПЕРЕВОД ВРЕМЕНИ В ТРЕБУЕМОЕ
 
     const dispatch = useDispatch()
-    const handleCheck = () => {
-        dispatch(setCheck(id))
-    }
+
 
     const handleClick = () => {
         dispatch(saveId({ id }))
@@ -55,7 +52,7 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, deadline, priorityColo
     return (
         <div className={hidden ? 'zone active' : 'zone'}>
             <div
-                onClick={handleClick}
+                onClick={ handleClick}
                 className={done ? 'task task-done' : 'task'}
             >
                 <div className='task-group'>
@@ -64,7 +61,7 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, deadline, priorityColo
                         color='primary'
                         icon={<CircleIcon style={{ color: '#fff', border: '1px solid grey', borderRadius: '50%', width: '20px', height: '20px' }} />}
                         checkedIcon={<CircleIcon style={{ color: '#03A0E8', border: '1px solid grey', borderRadius: '50%', width: '20px', height: '20px' }} />}
-                        onChange={handleCheck}
+                        onChange={handleClick}
                     >
                     </Checkbox>
                     <div className='task-name'>{title}</div>

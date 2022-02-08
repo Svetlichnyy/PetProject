@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./TaskDetails.scss"
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, selectTodoList } from "../TodoSlice";
 import { ReactComponent as ClockIcon } from "../../assets/images/bx-time-five.svg"
 import { ReactComponent as HourglassIcon } from "../../assets/images/bx-hourglass-rounded.svg"
 import { ReactComponent as HomeIcon } from "../../assets/images/bx-color-house.svg";

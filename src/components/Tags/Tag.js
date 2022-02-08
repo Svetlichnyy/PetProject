@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ReactComponent as EditPenIcon } from "../../assets/images/bx-edit-alt.svg";
 import { ReactComponent as TrashCanIcon } from "../../assets/images/bx-trash.svg";
+import {ReactComponent as TagIcon} from "../../assets/images/Tag.svg";
 
 const Tag = (props) => {
 
@@ -39,6 +40,7 @@ const Tag = (props) => {
                         onChange={(e) => setTagData(e.target.value)} />
                 </>
                 : <>
+                    <TagIcon className="HashTag"/>
                     {props.data.title}
                     <label
                         onClick={(event) => handleEditClick(event)}

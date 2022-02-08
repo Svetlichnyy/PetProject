@@ -22,6 +22,7 @@ const Form = ({children, setOpenLogin}) => {
             const response = await axios.post('https://young-brushlands-01487.herokuapp.com/api/user/login', formData)
             console.log(response)
             localStorage.setItem('token', (response.data.token))
+            localStorage.setItem('userId', (response.data.user.id))
             navigate('/')
         } catch (err) {
             console.log('ERROR in LOGIN')
@@ -30,7 +31,8 @@ const Form = ({children, setOpenLogin}) => {
 
     const navigate = useNavigate()
 
-    function handleClick() {
+    function handleClick(e) {
+        e.preventDefault()
         loginProfile()
 
     }
@@ -77,7 +79,7 @@ const Form = ({children, setOpenLogin}) => {
                                 Forgot your password?
                             </div>
                             <div className='footer'>
-                                <button onClick={handleClick} className='main-button button-form' type='submit'>
+                                <button onClick={(e) => handleClick} className='main-button button-form' type='submit'>
                                     Login
                                 </button>
                             </div>

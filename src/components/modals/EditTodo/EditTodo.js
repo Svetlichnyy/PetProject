@@ -30,11 +30,9 @@ const EditTodo = (props) => {
         priorityColor: props.currentTask[0].priority.color,
         notificationTime: props.currentTask[0].notification.time,
         deadline: props.currentTask[0].deadline,
-        tagsTitleArray: props.currentTask[0].tags,
-        id:props.currentTask[0].id
+        tagsTitleArray: props.currentTask[0].tags
     })
     console.log(todoId)
-    console.log(new Date(ToDoData.deadline))
     const  editToDo = (todoId,taskList,ToDoData) => {
         dispatch(editTask(todoId,taskList,ToDoData));
         props.setOpen(false);
@@ -44,11 +42,18 @@ const EditTodo = (props) => {
         setTime(e.target.value);
         setToDoData({...ToDoData, notificationTime: e.target.value})
     };
-    const deleteTag = (removedTag) => {
+    const deleteTag = (removedTag,e) => {
+
         const newTags = tags.filter((tag) => tag !== removedTag);
         setTags(newTags);
+        setToDoData({...ToDoData,tagsTitleArray:tags.map((tag)=>{
+                return(
+                    tag.title
+                )
+            })})
     };
-    const handleChangeTags = (value) => {
+    const handleChangeTags = (value,e) => {
+
         setTags([...tags, value])
         setToDoData({...ToDoData, tagsTitleArray:tags.map((tag)=>{
             return(
@@ -68,19 +73,6 @@ const EditTodo = (props) => {
         setToDoData({...ToDoData,priorityColor:e.target.value})
     };
 
-
-
-
-    //     tagsTitleArray: props.currentTask.tagsTitleArray,
-    //     notificationTime: props.currentTask.notificationTime,
-    //     deadline: props.currentTask.deadline,
-    //     categoryTitle: props.currentTask.categoryTitle,
-    //     priorityColor: props.currentTask.priorityColor,
-    //     id: props.currentTask.id,
-    //     done: props.currentTask.done
-    // })
-    // const [tags, setTags] = useState(ToDoData.tagsTitleArray);
-    console.log(todoId)
     return (
         <div className="create-todo">
             <Box className="form-box">
@@ -111,7 +103,7 @@ const EditTodo = (props) => {
                                             return(
                                                 <div className='tag' key={data.id}>
                                                     {data.title}
-                                                    <CloseIcon  style={{color: '#6F7D97', cursor:'pointer', zIndex:"1"}} onClick={() => {deleteTag(data)}} />
+                                                    <CloseIcon  style={{color: '#6F7D97', cursor:'pointer', zIndex:"1"}} onClick={(e) => {deleteTag(data,e)}} />
                                                 </div>
                                             )
                                         })
@@ -125,10 +117,10 @@ const EditTodo = (props) => {
                                         Tags.map((data) => {
                                             return (
                                                 <MenuItem
-                                                    key={data.id+(1337/2)}
+                                                    key={data.id+(1338/2)}
                                                     className="menu-item"
                                                     value={data}
-                                                    onClick={() => handleChangeTags(data)}
+                                                    onClick={(e) => handleChangeTags(data,e)}
                                                 >
                                                     {data.title}
                                                 </MenuItem>
@@ -181,6 +173,7 @@ const EditTodo = (props) => {
                                         value={value}
                                         onChange={(newValue) => {
                                             setValue(newValue);
+                                            setToDoData({...ToDoData,deadline: newValue})
                                             console.log(value)
                                         }}
                                     />
@@ -224,7 +217,7 @@ const EditTodo = (props) => {
                                         <Select
                                             labelId="category-label"
                                             id="category-label-select"
-                                            value={priority}
+                                            value={priority.toString()}
                                             label="Priority"
                                             onChange={handleChangePriority}
                                         >

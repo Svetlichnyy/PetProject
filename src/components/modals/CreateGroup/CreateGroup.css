@@ -1,0 +1,67 @@
+* {
+  font-family: "Circe", sans-serif;
+  box-sizing: border-box;
+}
+
+.create-group .form-box {
+  width: 524px;
+  height: 360px;
+}
+.create-group .create-group-content {
+  margin: 10vh 0 0 3vw;
+  width: 412px;
+}
+.create-group .create-group-title {
+  font-family: "Circe ExtraBold", sans-serif;
+  font-size: 24px;
+  margin-bottom: 2vh;
+}
+.create-group .form-email-label {
+  margin-top: -13px;
+}
+.create-group .create-group-buttons {
+  display: flex;
+  justify-content: right;
+}
+.create-group .btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 22px;
+  border: 1px solid #E44233;
+  border-radius: 10px;
+  background: none;
+  width: 97px;
+  height: 43px;
+}
+.create-group .btn-delete span {
+  white-space: nowrap;
+  font-size: 16px;
+  color: #E44233;
+}
+.create-group .btn-delete:hover {
+  background: #E44233;
+  cursor: pointer;
+}
+.create-group .btn-delete:hover span {
+  color: white;
+}
+.create-group .btn-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 43px;
+  background: #03A0E8;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0 7px;
+  border: none;
+  cursor: pointer;
+}
+.create-group .btn-create span {
+  white-space: nowrap;
+}
+
+/*# sourceMappingURL=CreateGroup.css.map */

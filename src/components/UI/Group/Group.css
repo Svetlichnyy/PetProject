@@ -1,0 +1,45 @@
+* {
+  font-family: "Circe", sans-serif;
+  box-sizing: border-box;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 10px;
+  height: 48px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.group .group-title {
+  display: flex;
+  align-items: center;
+}
+.group .group-title-folder {
+  margin: 0 2vw;
+}
+.group .group-title-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000850;
+  padding-left: 1vw;
+  border-left: 1px solid #B7B7BF;
+}
+.group .group-items {
+  display: flex;
+  align-items: center;
+}
+.group .group-items-arrow {
+  background: url("../../../assets/images/arrow.svg") no-repeat;
+  width: 16px;
+  height: 10px;
+  transform: rotate(180deg);
+  margin: 0 1vw;
+}
+.group .group-items-arrow.open {
+  transform: rotate(0);
+}
+
+/*# sourceMappingURL=Group.css.map */

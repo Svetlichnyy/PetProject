@@ -17,7 +17,6 @@ import {ReactComponent as MeetingIcon} from "../../../assets/images/bx-color-mee
 import {ReactComponent as WorkIcon} from "../../../assets/images/bx-color-work.svg";
 import {ReactComponent as SportIcon} from "../../../assets/images/bx-color-workout.svg";
 import {useDispatch, useSelector} from "react-redux";
-import {saveTodo} from "../../TodoSlice";
 import axiosApi from "../../../axios/api";
 import Tag from '../../Tags/Tag'
 
@@ -42,7 +41,7 @@ const CreateTodo = (props) => {
             console.log(err)
             console.log('Error in posting Task')
         }
-        console.log(`Adding ${ToDoData}`)
+        console.log(`Adding ${value.toLocaleString()}`)
         dispatch(fetchTasks())
 
     }
@@ -88,7 +87,8 @@ const CreateTodo = (props) => {
                         <div className='login-email'>
                             <label className='form-email'>
                                 <input
-                                    onChange={(e) => setToDoData({...ToDoData, title: e.target.value})}
+                                    defaultValue={'New Task'}
+                                    onChange={(e) =>  setToDoData({...ToDoData, title: e.target.value})}
                                     placeholder="Enter Task Name"
                                     className='form-email-input tag-input'
                                 />
