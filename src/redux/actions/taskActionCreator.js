@@ -37,15 +37,23 @@ export function deleteTask(todoId,taskList){
 }
 
 export function editTask(todoId,todoList,ToDoData){
+  const convertDate = (date) => {
+    if (!date) {
+      return date
+    }
+    date = new Date(date)
+    date = new Date(date.getTime() + 3 * 60 * 60 * 1000)
+    return date
+  }
   console.log(ToDoData)
   return async (dispatch) => {
     try {
     const response = await axiosApi.put(`/task/${todoId}`, {
       title: ToDoData.title,
       description: ToDoData.description,
-      tagsTitleArray: [...ToDoData.tagsTitleArray],
+      tagsTitleArray: ToDoData.tagsTitleArray,
       notificationTime: ToDoData.notificationTime,
-      deadline: ToDoData.deadline,
+      deadline: convertDate(ToDoData.deadline),
       categoryTitle: ToDoData.categoryTitle,
       priorityColor: ToDoData.priorityColor,
       })

@@ -10,7 +10,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteTask, editTask, fetchTasks} from "../../../redux/actions/taskActionCreator";
+import {editTask} from "../../../redux/actions/taskActionCreator";
 
 const EditTodo = (props) => {
     const [value, setValue] = useState(new Date());
@@ -18,8 +18,8 @@ const EditTodo = (props) => {
     // const deadLineHours = dLine.getHours()+3;
     // const rightDeadLine =  dLine.setHours(deadLineHours)
     // setDLine()
-    const [tags, setTags] = useState(props.currentTask[0].tags);
-    const Tags = useSelector((state) => state.userTag.tags)
+    const [tags, setTags] = useState(props.currentTask[0].tags.map(tag => tag.title));
+    const Tags = useSelector((state) => state.userTag.tags.map(tag => tag.title))
     const Categories = useSelector((state) => state.userCategories.categories)
 
     const taskList = useSelector(store => store.tasks.tasks)
@@ -34,7 +34,7 @@ const EditTodo = (props) => {
         priorityColor: props.currentTask[0].priority.color,
         notificationTime: props.currentTask[0].notification.time,
         deadline: props.currentTask[0].deadline,
-        tagsTitleArray: props.currentTask[0].tags
+        tagsTitleArray: props.currentTask[0].tags.map(tag => tag.title),
     })
     console.log(todoId)
     const  editToDo = (todoId,taskList,ToDoData) => {
@@ -46,26 +46,10 @@ const EditTodo = (props) => {
         setTime(e.target.value);
         setToDoData({...ToDoData, notificationTime: e.target.value})
     };
-    const deleteTag = (removedTag,e) => {
-
-        const newTags = tags.filter((tag) => tag !== removedTag);
-        setTags(newTags);
-        setToDoData({...ToDoData,tagsTitleArray:tags.map((tag)=>{
-                return(
-                    tag.title
-                )
-            })})
-    };
-    const handleChangeTags = (value,e) => {
-
-        setTags([...tags, value])
-        setToDoData({...ToDoData, tagsTitleArray:tags.map((tag)=>{
-            return(
-              tag.title
-            )
-        })})
-        console.log(ToDoData.tagsTitleArray)
-    };
+    const handleChangeTags = (e) => {
+        setTags(e.target.value)
+        setToDoData({...ToDoData, tagsTitleArray: e.target.value})
+    }
     const [category, setCategory] = useState(props.currentTask[0].category.title);
     const handleChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -101,32 +85,20 @@ const EditTodo = (props) => {
                         <div>
                             <FormControl fullWidth>
                                 <label className='tags-title'>Add tags</label>
-                                <div className='tags-group'>
-                                    {
-                                        tags.map(data => {
-                                            return(
-                                                <div className='tag' key={data.id}>
-                                                    {data.title}
-                                                    <CloseIcon  style={{color: '#6F7D97', cursor:'pointer', zIndex:"1"}} onClick={(e) => {deleteTag(data,e)}} />
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
                                 <Select
                                     multiple={true}
                                     value={tags}
+                                    onChange={handleChangeTags}
                                 >
                                     {
                                         Tags.map((data) => {
                                             return (
                                                 <MenuItem
-                                                    key={data.id+(1338/2)}
+                                                    key={data+(1338/2)}
                                                     className="menu-item"
                                                     value={data}
-                                                    onClick={(e) => handleChangeTags(data,e)}
                                                 >
-                                                    {data.title}
+                                                    {data}
                                                 </MenuItem>
                                             )
                                         })

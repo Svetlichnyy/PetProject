@@ -1,24 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {fetchTasks} from "../../../redux/actions/taskActionCreator";
 import "../../UI/Form/Form.css"
 import {Box} from "@mui/material";
-import "./CreateTodo.css"
+import "./CreateTodo.scss"
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
-import CloseIcon from "@mui/icons-material/Close";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {ReactComponent as HomeIcon} from "../../../assets/images/bx-color-house.svg";
-import {ReactComponent as MeetingIcon} from "../../../assets/images/bx-color-meeting.svg";
-import {ReactComponent as WorkIcon} from "../../../assets/images/bx-color-work.svg";
-import {ReactComponent as SportIcon} from "../../../assets/images/bx-color-workout.svg";
 import {useDispatch, useSelector} from "react-redux";
 import axiosApi from "../../../axios/api";
-import Tag from '../../Tags/Tag'
 
 const CreateTodo = (props) => {
     const userTags = useSelector((state) => state.userTag.tags)
@@ -60,13 +54,8 @@ const CreateTodo = (props) => {
 
     };
 
-    const handleChangeTags = (value) => {
-        setTags([...tags, value])
-    };
-
-    const removeTag = (removedTag) => {
-        const newTags = tags.filter((tag) => tag !== removedTag);
-        setTags(newTags);
+    const handleChangeTags = (e) => {
+        setTags(e.target.value)
     };
 
     const [ToDoData, setToDoData] = useState({
@@ -98,21 +87,10 @@ const CreateTodo = (props) => {
                         <div>
                             <FormControl fullWidth>
                                 <label className='tags-title'>Add tags</label>
-                                <div className='tags-group' >
-                                    {
-                                        tags.map(data => {
-                                            return(
-                                                <div className='tag' key={data.id}>
-                                                    {data}
-                                                    <CloseIcon  style={{color: '#6F7D97', cursor:'pointer', zIndex:"1"}} onClick={() => {removeTag(data)}} />
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
                                 <Select
                                     multiple={true}
                                     value={tags}
+                                    onChange={handleChangeTags}
                                 >
                                     {
                                         userTags.map((data) => {
@@ -121,7 +99,6 @@ const CreateTodo = (props) => {
                                                     key={data.id+1}
                                                     className="menu-item"
                                                     value={data.title}
-                                                    onClick={() => handleChangeTags(data.title)}
                                                 >
                                                     {data.title}
                                                 </MenuItem>

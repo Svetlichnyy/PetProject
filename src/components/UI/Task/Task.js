@@ -3,43 +3,10 @@ import './Task.scss';
 import { Checkbox } from "@mui/material";
 import CircleIcon from '@mui/icons-material/Circle';
 import { useDispatch } from "react-redux";
-import { ReactComponent as HomeIcon } from "../../../assets/images/bx-color-house.svg";
-import { ReactComponent as MeetingIcon } from "../../../assets/images/bx-color-meeting.svg";
-import { ReactComponent as WorkIcon } from "../../../assets/images/bx-color-work.svg";
-import { ReactComponent as SportIcon } from "../../../assets/images/bx-color-workout.svg";
 import { saveId } from "../../../redux/actions/taskActionCreator";
+import NormalTime from "../../../NormalTime";
 
-const Task = ({ title, id, tagsTitleArray, categoryTitle, deadline, priorityColor, done, openAside, setOpenAside, hidden }) => {
-
-    // ПЕРЕВОД ВРЕМЕНИ В ТРЕБУЕМОЕ
-    const dateNTime = deadline.split("T")
-    const yearMonthDay = dateNTime[0]?.split("-")
-    const hoursMinutes = dateNTime[1]?.split(":")
-    const superTime = new Date(new Date().setFullYear(yearMonthDay[2], yearMonthDay[1], yearMonthDay[0])).setHours(hoursMinutes[0], hoursMinutes[1])
-    const result = new Date(superTime)
-    const hours = result.getHours()
-    const minutes = result.getMinutes()
-    const mm = result.getMonth()
-    const dd = new Date(result.setMonth(mm)).getDate().toString();
-    const ddChars = dd.split('');
-    const arr = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ];
-    const superMegaTime = arr[mm] + " " + (ddChars[1] ? dd : ddChars[0]) + ', ' + (hours > 12 ? hours - 12 : hours) +
-        ":" + (minutes < 10 ? minutes + '0' : minutes) + (hours > 12 ? " pm" : " am")
-
-    // ПЕРЕВОД ВРЕМЕНИ В ТРЕБУЕМОЕ
+const Task = ({ title, id, tagsTitleArray, categoryTitle, priorityColor, done, openAside, setOpenAside, hidden, notification }) => {
 
     const dispatch = useDispatch()
 
@@ -65,7 +32,7 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, deadline, priorityColo
                     >
                     </Checkbox>
                     <div className='task-name'>{title}</div>
-                    <div className='task-date'><span>{superMegaTime}</span></div>
+                    <div className='task-date'><span>{NormalTime(notification)}</span></div>
                     <div className='task-category'>
                         {categoryTitle}
                     </div>

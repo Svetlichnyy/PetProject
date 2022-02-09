@@ -7,8 +7,8 @@ const NormalTime = (time) => {
     const hoursMinutes = dateNTime[1]?.split(":")
     const hours = hoursMinutes[0]
     const minutes = hoursMinutes[1]
-
-    const mm = yearMonthDay[2]-1
+    // console.log(yearMonthDay);
+    const mm = Number(yearMonthDay[2]).toString() - 1
     const dd = yearMonthDay[1];
     const ddChars = dd.split('');
     const arr = [

@@ -158,7 +158,7 @@ const TaskList = (props) => {
                         categoryTitle={item.category.title }
                         priorityColor={item.priority.color }
                         done={item.done}
-                        notification={item.notification}
+                        notification={item.remind_in}
                     />
                 ))
             }
