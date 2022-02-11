@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {fetchTasks} from "../../../redux/actions/taskActionCreator";
-import "../../UI/Form/Form.css"
+import "../../UI/Form/Form.scss"
 import {Box} from "@mui/material";
 import "./CreateTodo.scss"
 import TextField from '@mui/material/TextField';
@@ -20,6 +20,14 @@ const CreateTodo = (props) => {
     const dispatch = useDispatch()
     const [value, setValue] = useState(new Date());
     const [tags, setTags] = useState([]);
+    const convertDate = (date) => {
+        if (!date) {
+            return date
+        }
+        date = new Date(date)
+        date = new Date(date.getTime() + 3 * 60 * 60 * 1000)
+        return date
+    }
     const addTodo = async () =>{
         try{
             const response = await axiosApi.post('/task', {
@@ -27,15 +35,13 @@ const CreateTodo = (props) => {
                 description: ToDoData.description,
                 tagsTitleArray: tags,
                 notificationTime: time,
-                deadline: value.toLocaleString(),
+                deadline: convertDate(value.toLocaleString()),
                 categoryTitle: category,
                 priorityColor: priority})
-            console.log(response)
         } catch(err){
             console.log(err)
             console.log('Error in posting Task')
         }
-        console.log(`Adding ${value.toLocaleString()}`)
         dispatch(fetchTasks())
 
     }
@@ -149,8 +155,8 @@ const CreateTodo = (props) => {
                                         label="Set Deadline"
                                         value={value}
                                         onChange={(newValue) => {
-                                            setValue(newValue);
-
+                                           newValue.toISOString()
+                                            setValue(newValue.toISOString());
                                         }}
                                     />
                                 </LocalizationProvider>
@@ -238,8 +244,6 @@ const CreateTodo = (props) => {
                         <button className='main-button form-next-todo'
                                 onClick={() => {
                                     addTodo()
-
-                                    console.log("Adding todo...")
                                     props.setOpen(false)
                                 }}
                         >

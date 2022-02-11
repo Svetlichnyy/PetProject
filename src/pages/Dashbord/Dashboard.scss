@@ -1,0 +1,35 @@
+
+*{
+    font-family: Circe, sans-serif;
+}
+
+.dashboard {
+    height: 100%;
+    width: 100%;
+    background-color: #F7F8FA;
+
+    .header-menu {
+        display: flex;
+        justify-content: space-between;
+        height: 0;
+        .small-logo{
+            margin: 10px 30px 10px 0;
+            height: 0;
+            width: 0;
+        }
+
+    }
+
+}
+@media screen and (max-width: 1020px){
+    .dashboard {
+        .header-menu {
+            height: 60px;
+            .small-logo{
+                height: 40px;
+                width: 40px;
+            }
+
+        }
+    }
+}

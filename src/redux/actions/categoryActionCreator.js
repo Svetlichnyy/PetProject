@@ -5,7 +5,6 @@ export function fetchCategories() {
     return async (dispatch) => {
         try {
             const response = await axiosApi.get('/category');
-            console.log(response);
             dispatch(setUserCategories(response.data));
         } catch (err) {
             console.log(err);

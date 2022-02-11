@@ -1,8 +1,10 @@
+.sidebar.active{
+  display: none;
+}
 .sidebar{
   ::-webkit-scrollbar {
     width: 0;
   }
-  font-family: Circe;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -25,6 +27,7 @@
   }
   .logo{
     margin-top: 16px;
+    display: block;
   }
   .category{
     position: relative;
@@ -174,5 +177,47 @@
   }
   .profile-box-settings, .profile-box-notifications{
     margin-bottom: 15px;
+  }
+  .profile-without-photo{
+    background-color: #000850;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+  }
+  .profile-without-photo span{
+    margin-top: 3px;
+    color: #fff;
+  }
+
+}
+.burger{
+  display: none;
+  position: absolute;
+  top: 18px;
+  margin: 10px 20px;
+  height: 24px;
+  width: 24px;
+  z-index: 1000;
+}
+@media screen and (max-width: 1020px){
+  .sidebar{
+    display: none;
+  }
+  .burger{
+    display: block;
+    height: 24px;
+    width: 24px;
+  }
+
+  .sidebar.active{
+    display: block;
+    border: 1px solid #D7D7D7;
+    border-radius: 0 20px 20px 0;
+    .logo{
+      display: none;
+    }
   }
 }

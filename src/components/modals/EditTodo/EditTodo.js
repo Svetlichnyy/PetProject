@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Box} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
@@ -14,10 +13,6 @@ import {editTask} from "../../../redux/actions/taskActionCreator";
 
 const EditTodo = (props) => {
     const [value, setValue] = useState(new Date());
-    // const [dLine,setDLine] = useState(value);
-    // const deadLineHours = dLine.getHours()+3;
-    // const rightDeadLine =  dLine.setHours(deadLineHours)
-    // setDLine()
     const [tags, setTags] = useState(props.currentTask[0].tags.map(tag => tag.title));
     const Tags = useSelector((state) => state.userTag.tags.map(tag => tag.title))
     const Categories = useSelector((state) => state.userCategories.categories)
@@ -36,7 +31,6 @@ const EditTodo = (props) => {
         deadline: props.currentTask[0].deadline,
         tagsTitleArray: props.currentTask[0].tags.map(tag => tag.title),
     })
-    console.log(todoId)
     const  editToDo = (todoId,taskList,ToDoData) => {
         dispatch(editTask(todoId,taskList,ToDoData));
         props.setOpen(false);
@@ -150,7 +144,6 @@ const EditTodo = (props) => {
                                         onChange={(newValue) => {
                                             setValue(newValue);
                                             setToDoData({...ToDoData,deadline: newValue})
-                                            console.log(newValue)
                                         }}
                                     />
                                 </LocalizationProvider>

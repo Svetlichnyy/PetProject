@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {editGroup, deleteGroup} from "../../../redux/actions/groupActionCreator";
 import {Box} from "@mui/material";
-import "./EditGroup.css"
+import "./EditGroup.scss"
 import CloseIcon from "@mui/icons-material/Close";
 
 const EditGroup = (props) => {

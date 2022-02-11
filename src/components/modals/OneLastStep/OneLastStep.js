@@ -1,6 +1,6 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import '../../UI/Form/Form.css'
+import '../../UI/Form/Form.scss'
 import DropImage from "../../UI/DropImage/DropImage";
 
 const OneLastStep = ({page, formData, setFormData, setOpenForm, setOpenLogin,registerProfile}) => {

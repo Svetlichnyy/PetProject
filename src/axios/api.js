@@ -1,13 +1,13 @@
 import axios from "axios";
 
-
-const token = localStorage.getItem('token') || ""
-export default axios.create({
+const defaultOptions = {
     baseURL: 'https://young-brushlands-01487.herokuapp.com/api',
-    headers:{
+        };
+        let instance = axios.create(defaultOptions);
+        instance.interceptors.request.use(function (config) {
+            const token = localStorage.getItem('token');
+            config.headers.Authorization =  token ? `Bearer ${token}` : '';
+            return config;
+        });
 
-        Authorization : `Bearer ${token}`
-    }
-})
-
-
+        export default instance

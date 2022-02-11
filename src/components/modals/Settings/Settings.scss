@@ -183,4 +183,16 @@
     padding: 0;
     font-size: 14px;
   }
+  .profile-without-photo{
+    background-color: #000850;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  }
+  .profile-without-photo span{
+    color: #fff;
+  }
 }

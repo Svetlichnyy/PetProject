@@ -1,6 +1,6 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import '../../UI/Form/Form.css'
+import '../../UI/Form/Form.scss'
 
 const Registration = ({page, formData, setFormData}) => {
 

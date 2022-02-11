@@ -13,10 +13,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Settings from "../modals/Settings/Settings";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import {ReactComponent as BurgerMenu} from "../../assets/images/burger.svg";
 
 
-
-const Sidebar = () => {
+const Sidebar = (props) => {
 
     const navigate = useNavigate()
 
@@ -34,9 +35,17 @@ const Sidebar = () => {
         localStorage.removeItem('token')
         navigate('/home')
     }
-
+    const handleClickAway = () => {
+        props.setOpenSidebar(false);
+    };
+    const handleClick = () => {
+        props.setOpenSidebar(!props.openSidebar);
+    };
     return (
-        <div className='sidebar'>
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div>
+                <BurgerMenu className='burger' onClick={handleClick}/>
+                <div className={props.openSidebar ?  'sidebar active' : 'sidebar'}>
             <div className="logo">
                 <ReactLogo />
             </div>
@@ -76,7 +85,10 @@ const Sidebar = () => {
             </div>
             <div className="profile">
                 <Badge color="secondary" overlap="circular" badgeContent=" " variant="dot">
-                    <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
+                    {userInfo.photo === ''
+                        ? <div className='profile-without-photo'><span>{userInfo.first_name !== undefined && userInfo.first_name[0]} {userInfo.last_name !== undefined && userInfo.last_name[0]}</span></div>
+                        : <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
+                    }
                 </Badge>
                 <button className='profile-name'>
                     {userInfo.first_name} {userInfo.last_name !== undefined && userInfo.last_name[0] + '.'}
@@ -84,7 +96,10 @@ const Sidebar = () => {
                 <div className='profile-box'>
                     <div className='profile-box-account'>
                         <div className='profile-box-img'>
-                            <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
+                            {userInfo.photo === ''
+                                ? <div className='profile-without-photo'><span>{userInfo.first_name !== undefined && userInfo.first_name[0]} {userInfo.last_name !== undefined && userInfo.last_name[0]}</span></div>
+                                : <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
+                            }
                         </div>
                         <div className='profile-box-title'>
                             <div className='profile-box-name'>
@@ -124,6 +139,8 @@ const Sidebar = () => {
                 </div>
             </div>
         </div>
+            </div>
+        </ClickAwayListener>
     );
 };
 

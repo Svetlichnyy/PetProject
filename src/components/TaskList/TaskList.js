@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './TaskList.scss';
 import Task from "../../components/UI/Task/Task";
 import { useDispatch, useSelector } from "react-redux";
-// import { saveTodo, selectTodoList } from '../TodoSlice'
 import { Modal } from "@mui/material";
 import CreateTodo from "../modals/CreateTodo/CreateTodo";
 import CloseIcon from "@mui/icons-material/Close";
@@ -16,7 +15,7 @@ import FormControl from '@material-ui/core/FormControl';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import SortIcon from '../../assets/images/Sort.svg';
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import { fetchTasks } from '../../redux/actions/taskActionCreator';
+import {fetchTasks, sortTasks} from '../../redux/actions/taskActionCreator';
 
 
 const TaskList = (props) => {
@@ -72,12 +71,23 @@ const TaskList = (props) => {
         getContentAnchorEl: null
     };
 
+    useEffect(() => {
+        dispatch(sortTasks(search));
+    }, [search]);
+
+    useEffect(() => {
+        dispatch(sortTasks(undefined, startDate.getFullYear() + '-' +  (startDate.getMonth()+1) + '-' + startDate.getDate()));
+    }, [startDate]);
+
+
+    useEffect(() => {
+        dispatch(sortTasks(undefined, undefined, sort));
+    }, [sort]);
 
 
     return (
         <div className={props.openAside ? 'taskList active' : 'taskList'}>
             <div className='taskList-header'>
-
                 <div className='taskList-header-items'>
                     <div onClick={() => { setHidden(!hidden) }} className={hidden ? 'taskList-title open' : 'taskList-title'}>My tasks</div>
                     <div className='search-box'>
@@ -104,19 +114,19 @@ const TaskList = (props) => {
                                 value={sort}
                                 onChange={sortChange}
                             >
-                                <MenuItem value={"Sort by date"}>
+                                <MenuItem value={"createdAt"}>
                                     <ListItemIcon classes={{ root: outlineSelectClasses.listIcon }}>
                                         <img src={SortIcon} alt="" />
                                     </ListItemIcon>
                                     <span style={{ marginTop: 3 }}>Sort by date</span>
                                 </MenuItem>
-                                <MenuItem value={'Sort by name'}>
+                                <MenuItem value={'title'}>
                                     <ListItemIcon classes={{ root: outlineSelectClasses.listIcon }}>
                                         <img src={SortIcon} alt="" />
                                     </ListItemIcon>
                                     <span style={{ marginTop: 3 }}>Sort by name</span>
                                 </MenuItem>
-                                <MenuItem value={'Sort by priority'}>
+                                <MenuItem value={'priorityId'}>
                                     <ListItemIcon classes={{ root: outlineSelectClasses.listIcon }}>
                                         <img src={SortIcon} alt="" />
                                     </ListItemIcon>
@@ -144,22 +154,24 @@ const TaskList = (props) => {
             </div>
             {
                 todoList.map(item => (
-                    <Task
-                        openAside={props.openAside}
-                        setOpenAside={props.setOpenAside}
-                        hidden={hidden}
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        id={item.id}
-                        tagsTitleArray={item.tags.map(item => item.title)}
-                        notificationTime={item.notificationTime}
-                        deadline={item.deadline.toLocaleString()}
-                        categoryTitle={item.category.title }
-                        priorityColor={item.priority.color }
-                        done={item.done}
-                        notification={item.remind_in}
-                    />
+                    <div key={item.id}>
+                        {hidden && <Task
+                openAside={props.openAside}
+                setOpenAside={props.setOpenAside}
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                id={item.id}
+                tagsTitleArray={item.tags.map(item => item.title)}
+                notificationTime={item.notificationTime}
+                deadline={item.deadline.toLocaleString()}
+                categoryTitle={item.category.title}
+                priorityColor={item.priority.color}
+                done={item.done}
+                notification={item.remind_in}
+                groupId={item.groupId}
+                />}
+                    </div>
                 ))
             }
         </div>

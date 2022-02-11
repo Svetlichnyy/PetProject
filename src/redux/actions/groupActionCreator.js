@@ -5,7 +5,6 @@ export function fetchGroups() {
     return async (dispatch) => {
         try {
             const response = await axiosApi.get('/group');
-            console.log(response);
             dispatch(setGroups(response.data));
         } catch (err) {
             console.log(err);
@@ -28,13 +27,11 @@ export function saveId(id) {
 }
 
 export function editGroup(groupId,groupList,groupData){
-    console.log(groupData)
     return async (dispatch) => {
         try {
             const response = await axiosApi.put(`/group/${groupId}`, {
                 title: groupData,
             })
-            console.log(response)
             const newList = groupList.map((item) => {
                 if(item.id === groupId){
                     return{
@@ -58,8 +55,6 @@ export function deleteGroup(groupId,groupList){
     return async (dispatch) => {
         try{
             const response = await axiosApi.delete(`/group/${groupId}`)
-            console.log(response);
-            console.log(groupList)
             const newGroupList = groupList.filter((task) => task.id !== groupId);
             setGroups(newGroupList);
             dispatch(setGroups(newGroupList));

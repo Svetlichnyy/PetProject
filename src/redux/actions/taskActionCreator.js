@@ -1,11 +1,10 @@
 import axiosApi from '../../axios/api';
-import { SAVE_ID, SET_TODOS, EDIT_TODO } from "./actions";
+import { SAVE_ID, SET_TODOS } from "./actions";
 
 export function fetchTasks() {
   return async (dispatch) => {
     try {
       const response = await axiosApi.get('/task')
-      console.log(response);
       dispatch(setUserTasks(response.data));
     } catch (err) {
       console.log(err);
@@ -23,8 +22,6 @@ export function deleteTask(todoId,taskList){
   return async (dispatch) => {
     try{
       const response = await axiosApi.delete(`/task/${todoId}`)
-      console.log(response);
-      console.log(taskList)
       const newTodoList = taskList.filter((task) => task.id !== todoId);
       setUserTasks(newTodoList);
       dispatch(setUserTasks(newTodoList));
@@ -36,16 +33,46 @@ export function deleteTask(todoId,taskList){
   }
 }
 
+export function sortTasks(title, date, sort,category,tag) {
+  return async (dispatch) => {
+    try {
+      if (title !== undefined){
+        const response = await axiosApi.get(`/task/?searchTitle=${title}`)
+        dispatch(setUserTasks(response.data));
+      }
+      if (date !== undefined){
+        const response = await axiosApi.get(`/task/?searchDate=${date}`)
+        dispatch(setUserTasks(response.data));
+      }
+      if (sort !== undefined){
+        const response = await axiosApi.get(`/task/?sortOption=${sort}`)
+        dispatch(setUserTasks(response.data));
+      }
+      if (category !== undefined){
+        const response = await axiosApi.get(`/task/?categoryId=${category}`)
+        dispatch(setUserTasks(response.data));
+      }
+      if (tag !== undefined){
+        const response = await axiosApi.get(`/task/?tagId=${tag}`)
+        dispatch(setUserTasks(response.data));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
 export function editTask(todoId,todoList,ToDoData){
   const convertDate = (date) => {
     if (!date) {
       return date
     }
-    date = new Date(date)
-    date = new Date(date.getTime() + 3 * 60 * 60 * 1000)
-    return date
+    else {
+      date = new Date(date)
+      date = new Date(date.getTime() + 3 * 60 * 60 * 1000)
+      return date
+    }
   }
-  console.log(ToDoData)
   return async (dispatch) => {
     try {
     const response = await axiosApi.put(`/task/${todoId}`, {
@@ -57,7 +84,6 @@ export function editTask(todoId,todoList,ToDoData){
       categoryTitle: ToDoData.categoryTitle,
       priorityColor: ToDoData.priorityColor,
       })
-      console.log(response)
       const newList = todoList.map((item) => {
         if(item.id === todoId){
           return{
@@ -69,6 +95,7 @@ export function editTask(todoId,todoList,ToDoData){
             deadline: response.data.deadline,
             category: response.data.category,
             priority: response.data.priority,
+            remind_in: response.data.remind_in,
           }
         }
         return item;

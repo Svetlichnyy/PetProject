@@ -5,7 +5,6 @@ export function fetchTags() {
   return async (dispatch) => {
     try {
       const response = await axiosApi.get('/tag');
-      console.log(response);
       dispatch(setUserTags(response.data));
     } catch (err) {
       console.log(err);

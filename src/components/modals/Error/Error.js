@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import "./Error.css"
+import "./Error.scss"
 
 
 

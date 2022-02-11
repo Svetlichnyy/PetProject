@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../../UI/Form/Form.css'
+import '../../UI/Form/Form.scss'
 import {Box} from "@mui/material";
 import man from "../../../assets/images/modal-laptop-man.svg";
 import {useForm} from "react-hook-form";
@@ -23,6 +23,8 @@ const Form = ({children, setOpenLogin}) => {
             console.log(response)
             localStorage.setItem('token', (response.data.token))
             localStorage.setItem('userId', (response.data.user.id))
+            console.log(localStorage.getItem('token'))
+            console.log(localStorage.getItem('userId'))
             navigate('/')
         } catch (err) {
             console.log('ERROR in LOGIN')

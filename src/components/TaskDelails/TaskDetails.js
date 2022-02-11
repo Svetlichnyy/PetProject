@@ -3,10 +3,6 @@ import "./TaskDetails.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as ClockIcon } from "../../assets/images/bx-time-five.svg"
 import { ReactComponent as HourglassIcon } from "../../assets/images/bx-hourglass-rounded.svg"
-import { ReactComponent as HomeIcon } from "../../assets/images/bx-color-house.svg";
-import { ReactComponent as MeetingIcon } from "../../assets/images/bx-color-meeting.svg";
-import { ReactComponent as WorkIcon } from "../../assets/images/bx-color-work.svg";
-import { ReactComponent as SportIcon } from "../../assets/images/bx-color-workout.svg";
 import { ReactComponent as BellIcon } from "../../assets/images/bxs-bell-ring.svg";
 import { ReactComponent as BellOffIcon } from "../../assets/images/bxs-bell-ring-off.svg";
 import EditTodo from "../modals/EditTodo/EditTodo";
@@ -16,14 +12,9 @@ import {deleteTask, setUserTasks} from "../../redux/actions/taskActionCreator";
 import NormalTime from "../../NormalTime";
 
 const TaskDetails = (props) => {
-
-
-
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-
     const todoList = useSelector(store => store.tasks.tasks)
     const todoId = useSelector(store => store.tasks.toDoId.id)
     const [currentTask, setCurrentTask] = useState({

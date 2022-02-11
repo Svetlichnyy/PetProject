@@ -56,3 +56,12 @@
     top: 10px;
   }
 }
+
+@media screen and (max-width: 1020px){
+  .groupList{
+    margin: 0 15px 0 15px;
+  }
+  .groupList.active{
+    margin: 0 15px 0 15px;
+  }
+}

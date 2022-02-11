@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { ReactComponent as EditPenIcon } from "../../assets/images/bx-edit-alt.svg";
 import { ReactComponent as TrashCanIcon } from "../../assets/images/bx-trash.svg";
 import {ReactComponent as TagIcon} from "../../assets/images/Tag.svg";
+import {sortTasks} from "../../redux/actions/taskActionCreator";
+import {useDispatch} from "react-redux";
 
 const Tag = (props) => {
 
+    const dispatch = useDispatch()
     const [tagData, setTagData] = useState('')
     const [isEdit, setEdit] = useState(false);
 
@@ -27,10 +30,8 @@ const Tag = (props) => {
         props.deleteTag(props.data.id);
     }
 
-
-
     return (
-        <li key={props.data.id} className='tag-wrap'>
+        <li onClick={() => dispatch(sortTasks(undefined,undefined,undefined,undefined,props.data.id))} key={props.data.id} className='tag-wrap'>
             {isEdit
                 ? <>
                     <input type="text"

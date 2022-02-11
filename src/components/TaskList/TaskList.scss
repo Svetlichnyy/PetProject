@@ -22,6 +22,7 @@
 .taskList{
   margin: 0 15px 0 320px;
   padding-top: 15px;
+  padding-bottom: 15px;
 
   .taskList-header{
     margin-bottom: 20px;
@@ -215,4 +216,12 @@
     margin-right: 15px;
   }
 
+}
+@media screen and (max-width: 1020px){
+  .taskList{
+    margin: 0 15px 0 15px;
+  }
+  .taskList.active{
+    margin: 0 15px 0 15px;
+  }
 }

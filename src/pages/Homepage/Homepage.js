@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "./Homepage.css"
+import "./Homepage.scss"
 import Header from "../../components/Header/Header";
 import {ReactComponent as ReactImage} from "../../assets/images/Illustration.svg";
 import {Modal} from "@mui/material";

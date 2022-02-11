@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './DropImage.css'
+import './DropImage.scss'
 import Dropzone from "react-dropzone";
 import upload from '../../../assets/images/pic-upload.svg'
 

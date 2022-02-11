@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axiosApi from "../../../axios/api";
 import {useDispatch} from "react-redux";
 import {fetchGroups} from "../../../redux/actions/groupActionCreator";
-import "./CreateGroup.css"
+import "./CreateGroup.scss"
 import {Box} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -17,12 +17,10 @@ const CreateGroup = (props) => {
             const response = await axiosApi.post('/group', {
                 title: groupName,
             })
-            console.log(response)
         } catch(err){
             console.log(err)
             console.log('Error in posting Task')
         }
-        console.log(`Adding ${groupName}`)
         dispatch(fetchGroups())
     }
 
@@ -50,8 +48,6 @@ const CreateGroup = (props) => {
                         <button
                             onClick={() => {
                                 addGroup()
-
-                                console.log("Adding todo...")
                                 props.setOpen(false)
                             }}
                             className='btn-create'><span>Create group</span></button>

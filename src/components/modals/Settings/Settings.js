@@ -94,13 +94,16 @@ const Settings = (props) => {
                             </div>
                             <div className='account-profile-photo'>
                                 <div className='account-profile-img'>
-                                    <img src={man} style={{width: '80px', height:'80px', borderRadius: '50%'}} alt=""/>
+                                    {userInfo.photo === ''
+                                        ? <div className='profile-without-photo'><span>{userInfo.first_name !== undefined && userInfo.first_name[0]} {userInfo.last_name !== undefined && userInfo.last_name[0]}</span></div>
+                                        : <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
+                                    }
                                 </div>
                                 <div className='account-profile-group-change'>
-                                    <button onClick={(e) => preventDef} className='account-profile-btn-change'><span>Change photo</span></button>
+                                    <button type="button" onClick={(e) => preventDef} className='account-profile-btn-change'><span>Change photo</span></button>
                                     <div className='account-profile-btn-change-clue'>Pick a photo up to 4MB.</div>
                                 </div>
-                                <button className='account-profile-btn-delete'><span>Delete</span></button>
+                                <button type="button" className='account-profile-btn-delete'><span>Delete</span></button>
                             </div>
                             <div className='account-inputs'>
                                 <div className='login-email' style={{marginRight: '3vh'}}>
@@ -177,11 +180,6 @@ const Settings = (props) => {
                                     />
                                     <span className='form-email-label'>Current Password</span>
                                 </label>
-                                {/*<div className='error'>*/}
-                                {/*    {errors.firstName?.type === "required" && <span>This field is required</span>}*/}
-                                {/*    {errors.firstName?.type === "minLength" && <span>Minimal length is 2</span>}*/}
-                                {/*    {errors.firstName?.type === "pattern" && <span> Only English letters</span>}*/}
-                                {/*</div>*/}
                             </div>
                             <div className='account-inputs'>
                                 <div className='login-email' style={{marginRight: '3vh'}}>
@@ -194,11 +192,6 @@ const Settings = (props) => {
                                             className='form-email-input tag-input'
                                         />
                                         <span className='form-email-label'>New Password</span>
-                                        {/*<div className='error'>*/}
-                                        {/*    {errors.lastName?.type === "required" && <span>This field is required</span>}*/}
-                                        {/*    {errors.lastName?.type === "minLength" && <span>Minimal length is 2</span>}*/}
-                                        {/*    {errors.lastName?.type === "pattern" && <span> Only English letters</span>}*/}
-                                        {/*</div>*/}
                                     </label>
                                 </div>
                                 <div className='login-email pass-confirm-input'>
@@ -212,17 +205,15 @@ const Settings = (props) => {
                                         />
                                         <span className='form-email-label'>Confirm Password</span>
                                     </label>
-                                    {/*<div className='error'>*/}
-                                    {/*    {errors.email?.type === "required" && <span>Email is required</span>}*/}
-                                    {/*    {errors.email?.type === "pattern" && <span>Enter a valid email</span>}*/}
-                                    {/*</div>*/}
                                 </div>
                             </div>
                             <div className='password-buttons'>
                                 <button
+                                    type="button"
                                     onClick={clearPassword}
                                     className='account-profile-btn-delete pass-btn-cancel'><span>Cancel</span></button>
                                 <button
+                                    type="button"
                                     onClick={() => changePassword(userPassword)}
                                     className='account-profile-btn-change pass-btn-save'><span>Save</span></button>
                             </div>
@@ -230,12 +221,13 @@ const Settings = (props) => {
                         <div className='account-delete'>
                             <div className='account-delete-title'>Delete account</div>
                             <button
+                                type="button"
                                 onClick={deleteUser}
                                 className='account-profile-btn-delete btn-delete'><span>Delete Account</span></button>
                         </div>
                         <div className='account-btn'>
-                            <button onClick={() => props.setOpenSettings(false)} className='account-btn-cancel'>Cancel</button>
-                            <button onClick={() => changeUser(userInfo, userData)} className='account-btn-update'>Update</button>
+                            <button type="button" onClick={() => props.setOpenSettings(false)} className='account-btn-cancel'>Cancel</button>
+                            <button type="button" onClick={() => changeUser(userInfo, userData)} className='account-btn-update'>Update</button>
                         </div>
                     </div>
                     {props.children}

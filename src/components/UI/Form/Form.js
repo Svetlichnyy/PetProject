@@ -4,7 +4,7 @@ import AlmostDone from "../../modals/AlmostDone/AlmostDone";
 import OneLastStep from "../../modals/OneLastStep/OneLastStep";
 import {Box} from "@mui/material";
 import man from "../../../assets/images/modal-laptop-man.svg";
-import './Form.css'
+import './Form.scss'
 import axios from "axios";
 
 

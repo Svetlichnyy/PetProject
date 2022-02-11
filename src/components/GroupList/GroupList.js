@@ -19,7 +19,6 @@ const GroupList = (props) => {
 
     const groupList = useSelector(store => store.groups.groups)
 
-    console.log(groupList)
 
     useEffect(() => {
         dispatch(fetchGroups());
