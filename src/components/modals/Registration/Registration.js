@@ -2,7 +2,7 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 import '../../UI/Form/Form.scss'
 
-const Registration = ({page, formData, setFormData}) => {
+const Registration = ({page, formData, setFormData, setOpenForm, setOpenLogin}) => {
 
     const {
         register,
@@ -22,7 +22,15 @@ const Registration = ({page, formData, setFormData}) => {
         <form onSubmit={handleSubmit(onSubmit)} action="#">
             <div>
                 <div className='form-message'>
-                    Already a member? <span>Log in</span>
+                    Already a member? {''}
+                    <span
+                    onClick={() => {
+                        setOpenForm(false)
+                        setOpenLogin(true)
+                    }}
+                        style={{cursor:'pointer'}}>
+                    Log in
+                </span>
                 </div>
                 <label className='form-email'>
                     <input

@@ -3,6 +3,9 @@
   font-family: "Circe", sans-serif;
 }
 .settings{
+  ::-webkit-scrollbar {
+    width: 0;
+  }
   .form-box{
     display: flex;
     width: 947px;
@@ -22,7 +25,7 @@
     margin-bottom: 2vh;
   }
   .navbar-item{
-    padding-left: 3.5vw;
+    padding-left: 4vw;
     position: relative;
     cursor: pointer;
     border-left: 3px solid #03A0E8;
@@ -53,6 +56,9 @@
     color: #000850;
   }
   .account-profile-photo{
+    display: flex;
+  }
+  .btn-photo{
     display: flex;
   }
   .account-profile-group-change{
@@ -164,6 +170,10 @@
     margin: 0 7px;
     cursor: pointer;
   }
+  .account-btn-cancel:hover{
+    background: #0098DE;
+    color: #FFF;
+  }
   .account-btn-update{
     display: flex;
     justify-content: center;
@@ -177,6 +187,10 @@
     margin: 0 7px;
     border: none;
     cursor: pointer;
+  }
+  .account-btn-update:hover{
+    background: #0098DE;
+    color: #FFF;
   }
   .error{
     margin: 1vh 0 0 0.5vw;
@@ -194,5 +208,99 @@
   }
   .profile-without-photo span{
     color: #fff;
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 990px){
+  .settings {
+    .form-box {
+      display: flex;
+      width: 708px;
+      height: 812px;
+    }
+    .navbar{
+      height: 811px;
+    }
+    .navbar-item{
+      padding-left: 6.5vw;
+    }
+    .account-inputs input{
+      width: 216px;
+    }
+    .email-input{
+      width: 462px;
+    }
+    .current-password-input{
+      width: 462px;
+    }
+  }
+}
+
+@media screen and (max-width: 675px){
+  .settings {
+    .form-email-input{
+      width: 300px;
+    }
+    .account-inputs input{
+      width: 300px;
+    }
+    .form-box {
+      width: 335px;
+      height: 786px;
+      overflow: scroll;
+
+    }
+    .navbar{
+      display: none;
+    }
+    .media{
+      display: inline-block;
+      padding-left: 9.5vw;
+      border-left: none;
+      border-bottom: 2px solid #03A0E8;
+    }
+    .account-inputs{
+      display: inline-block;
+    }
+    .account-profile-photo{
+      justify-content: space-between;
+    }
+    .btn-photo{
+      display: flex;
+      flex-direction: column;
+    }
+    .account-profile-btn-delete{
+      width: 130px;
+      margin-right: 50px;
+    }
+    .account-profile-img{
+      display: flex;
+      align-items: center;
+      margin-left: 5vw;
+    }
+    .pass-btn-cancel{
+      margin: 0 30px 0 0;
+    }
+    .account-profile-group-change{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .account-profile-btn-change-clue{
+      font-size: 10px;
+      padding-left: 30px;
+      margin-bottom: 10px;
+    }
+    .btn-delete{
+      width: 300px;
+      margin: 0 0 3vh 0;
+      padding: 0;
+    }
+    .account-password{
+      width: 315px;
+    }
+    .account-btn{
+      padding-bottom: 20px;
+      margin-right: 20px;
+    }
   }
 }

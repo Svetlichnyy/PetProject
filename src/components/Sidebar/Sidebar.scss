@@ -66,6 +66,9 @@
       cursor: pointer;
       margin-bottom: 12px;
       height: 24px;
+      width: 100%;
+      transform: translateX(-26px);
+      padding-left: 20px;
     }
     input{
       outline: none;
@@ -98,6 +101,9 @@
       li{
         margin-bottom: 12px;
         cursor: pointer;
+        width: 100%;
+        transform: translateX(-26px);
+        padding-left: 20px;
       }
       input{
         outline: none;
@@ -201,8 +207,9 @@
   height: 24px;
   width: 24px;
   z-index: 1000;
+  cursor: pointer;
 }
-@media screen and (max-width: 1020px){
+@media screen and (max-width: 1350px){
   .sidebar{
     display: none;
   }
@@ -216,7 +223,9 @@
     display: block;
     border: 1px solid #D7D7D7;
     border-radius: 0 20px 20px 0;
-    .logo{
+  }
+  .sidebar-wrap.active{
+    .burger {
       display: none;
     }
   }

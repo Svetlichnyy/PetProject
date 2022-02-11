@@ -22,7 +22,7 @@ const EditGroup = (props) => {
         props.setOpenEdit(false);
     }
 
-    const [groupName, setGroupName] = useState('')
+    const [groupName, setGroupName] = useState(props.name)
 
     return (
         <div className="edit-group">

@@ -1,16 +1,31 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {setError} from "../../../redux/actions/alertsActionCreator";
 import "./Error.scss"
-
-
-
-
+import {Modal} from "@material-ui/core";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Error = () => {
-    const [isHidden,setHidden] = useState(true)
+
+    const dispatch = useDispatch()
+
+    const error = useSelector(store => store.alerts.error)
+
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        if (error === true){setOpen(true)}
+        if (error === false){setOpen(false)}
+    }, [error])
+
     return (
-        <>
-        { isHidden && <div onClick={() => setHidden(false)} className={'error-wrap active'}>
+        <Modal
+            open={open}
+            onClose={() => dispatch(setError(false))}
+        >
+         <div className={'error-wrap active'}>
             <div className="error">
+                <CloseIcon style={{ color: 'grey', position: 'absolute', right: '30px', top: '30px', cursor: 'pointer' }} onClick={() => dispatch(setError(false))} />
                 <div className="error-image">
                     <span className="top-span">Error</span>
                     <div className="image">
@@ -23,8 +38,7 @@ const Error = () => {
                 </div>
             </div>
         </div>
-}
-</>
+        </Modal>
     );
 };
 

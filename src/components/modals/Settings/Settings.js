@@ -7,6 +7,7 @@ import {Box} from "@mui/material";
 import man from '../../../assets/images/modal-laptop-man.svg'
 import {useForm} from "react-hook-form";
 import axiosApi from "../../../axios/api";
+import {setError, setSuccess} from "../../../redux/actions/alertsActionCreator";
 
 const Settings = (props) => {
 
@@ -51,15 +52,15 @@ const Settings = (props) => {
     const deleteUser = async () => {
         try {
             const response = await axiosApi.delete(`/user_info/${userId}`)
-            localStorage.removeItem('userId')
-            localStorage.removeItem('token')
-            navigate('/home')
-            console.log(response)
         }
         catch(err){
+            dispatch(setError(true))
             console.log(err)
             console.log('Error in delete user')
         }
+        localStorage.removeItem('userId')
+        localStorage.removeItem('token')
+        navigate('/home')
     }
 
     const clearPassword = (e) => {
@@ -94,16 +95,18 @@ const Settings = (props) => {
                             </div>
                             <div className='account-profile-photo'>
                                 <div className='account-profile-img'>
-                                    {userInfo.photo === ''
+                                    {userInfo.photo === null
                                         ? <div className='profile-without-photo'><span>{userInfo.first_name !== undefined && userInfo.first_name[0]} {userInfo.last_name !== undefined && userInfo.last_name[0]}</span></div>
                                         : <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
                                     }
                                 </div>
+                                <div className='btn-photo'>
                                 <div className='account-profile-group-change'>
                                     <button type="button" onClick={(e) => preventDef} className='account-profile-btn-change'><span>Change photo</span></button>
                                     <div className='account-profile-btn-change-clue'>Pick a photo up to 4MB.</div>
                                 </div>
                                 <button type="button" className='account-profile-btn-delete'><span>Delete</span></button>
+                            </div>
                             </div>
                             <div className='account-inputs'>
                                 <div className='login-email' style={{marginRight: '3vh'}}>
@@ -157,7 +160,7 @@ const Settings = (props) => {
                                         defaultValue={userInfo.email}
                                         onChange={(e) => setUserData({...userData, email:e.target.value})}
                                         placeholder="Enter E-mail"
-                                        className='form-email-input tag-input'
+                                        className='form-email-input email-input'
                                     />
                                     <span className='form-email-label'>E-mail</span>
                                 </label>
@@ -176,7 +179,7 @@ const Settings = (props) => {
                                         onChange={(e) => setUserPassword({...userPassword, currentPassword: e.target.value})}
                                         type="password"
                                         placeholder="Enter Current Password"
-                                        className='form-email-input tag-input'
+                                        className='form-email-input current-password-input'
                                     />
                                     <span className='form-email-label'>Current Password</span>
                                 </label>

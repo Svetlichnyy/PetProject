@@ -225,3 +225,107 @@
  opacity: 1;
 }
 
+
+@media screen and (max-width: 1000px){
+ .form-box{
+  width: 526px;
+  height: 560px;
+ }
+ .form-image{
+  display: none;
+ }
+ .form-container, .login-container{
+  margin-top: 50px !important;
+  margin-left: 15px;
+ }
+ .form-email-input{
+  width: 500px;
+ }
+ .button-form{
+  width: 500px;
+ }
+ .footer{
+  width: 526px;
+ }
+ .form-next{
+  width: 438px;
+ }
+ .form-next:after{
+  top: 14px;
+  right: 175px;
+ }
+ .tooltip{
+  left: 15px;
+  top: -165px;
+ }
+ .tooltip:before{
+  left: 14px;
+  top: 128px;
+ }
+ .dropzone{
+  width: 500px !important;
+  height: 135px !important;
+  img{
+   margin-left: 210px !important;
+   margin-top: 0 !important;
+  }
+  p{
+   font-size: 15px !important;
+  }
+ }
+ .pattern{
+  white-space: nowrap;
+  font-size: 13px !important;
+  margin-left: 100px !important;
+ }
+}
+
+@media screen and (max-width: 675px){
+ .form-box{
+  width: 335px;
+  height: 540px;
+ }
+ .form-container, .login-container{
+  margin-top: 50px !important;
+  margin-left: 15px;
+ }
+ .form-email-input{
+  width: 300px;
+ }
+ .button-form{
+  width: 300px;
+ }
+ .form-agreement{
+  width: 300px;
+ }
+ .form-next{
+  width: 240px;
+ }
+ .form-next:after{
+  right: 75px;
+ }
+ .tooltip{
+  left: 0;
+  top: -155px;
+ }
+ .tooltip:before{
+  left: 14px;
+  top: 128px;
+ }
+ .dropzone{
+  width: 300px !important;
+  height: 120px !important;
+  img{
+   margin-left: 110px !important;
+   margin-top: 0 !important;
+  }
+  p{
+   font-size: 15px !important;
+  }
+ }
+ .pattern{
+  white-space: nowrap;
+  font-size: 13px !important;
+  margin-left: 0 !important;
+ }
+}

@@ -38,6 +38,16 @@
     cursor: pointer;
   }
   .button-task{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 22px;
+    height: 43px;
+    background: #03A0E8;
+    border-radius: 10px;
+    white-space: nowrap;
     padding-right: 44px;
     position: relative;
     width: 170px;
@@ -50,6 +60,10 @@
       position: absolute;
       right: 18px;
       top: 10px;
+  }
+  .button-task:hover{
+      background: #0098DE;
+      cursor: pointer;
   }
   .taskList-header-items{
     display: flex;
@@ -217,11 +231,18 @@
   }
 
 }
-@media screen and (max-width: 1020px){
+@media screen and (max-width: 1350px){
   .taskList{
     margin: 0 15px 0 15px;
   }
   .taskList.active{
     margin: 0 15px 0 15px;
+  }
+}
+@media screen and (max-width: 675px){
+  .taskList{
+    .btn-search, .btn-calendar, .MuiFormControl-root{
+      display: none;
+    }
   }
 }

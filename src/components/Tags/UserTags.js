@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import axiosApi from '../../axios/api'
 import { fetchTags, setUserTags } from '../../redux/actions/tagActionCreator';
 import Tag from "./Tag";
+import {setError} from "../../redux/actions/alertsActionCreator";
 // import Error from "../../components/modals/Error";
 
 const UserTags = (props) => {
@@ -24,6 +25,7 @@ const UserTags = (props) => {
                     dispatch(setUserTags([...userTags, response.data]))
                     // console.log(response)
                 } catch (err) {
+                    dispatch(setError(true))
                     console.log('ERROR in posting TAG data')
                 }
 
@@ -42,6 +44,7 @@ const UserTags = (props) => {
             console.log(response)
         }
         catch (err) {
+            dispatch(setError(true))
             console.log('Error in editing tag')
         }
     }
@@ -52,6 +55,7 @@ const UserTags = (props) => {
             console.log(response)
         }
         catch (err) {
+            dispatch(setError(true))
             console.log(err);
             console.log('Error in deleting TAG')
         }

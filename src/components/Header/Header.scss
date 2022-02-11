@@ -1,7 +1,9 @@
 .header-main {
-
+  ::-webkit-scrollbar {
+    width: 0;
+  }
     width: 100vW;
-    height: 87px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,20 +15,35 @@
     margin: 0;
     padding: 0;
   }
+
   .logo{
     width: 181px;
     height: 45px;
   }
-
-
-  .header-container {
-    display: flex;
-    align-items: center;
-    width: 55.8vW;
-    height: 45px;
+  .header-grow{
+    min-width: 200px;
   }
 
+  .header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    .logo{
+      padding-left: 13vw;
+    }
+  }
+  .burger{
+    top: 18px;
+    left: 30px;
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    display: none;
+  }
   .button-container {
+    padding-left: 100px;
     width: 26vW;
     margin-right: 0;
     display: flex;
@@ -38,11 +55,13 @@
     border: 0;
     background: none;
     font-size: 18px;
-    line-height: 27px;
+    line-height: 100%;
     color: #000850;
     opacity: 0.7;
   }
-
+  .header-sidebar{
+    display: none;
+  }
   .button-container button:last-child {
     margin-right: 0;
   }
@@ -92,9 +111,54 @@
 
   .header-auth-buttons {
     display: flex;
+    padding-right: 235px;
   }
 
   button {
     cursor: pointer;
   }
+}
+@media screen and (max-width: 1000px){
+  .header-main{
+    overflow: visible;
+    .header-sidebar{
+      display: none;
+    }
+    .header-sidebar.active{
+      display: block;
+      height: 193vH;
+      width: 280px;
+      background: #FFF;
+      box-shadow: 0px 2px 7px 1px rgba(77, 78, 109, 0.1);
+      border-radius: 0px 10px 10px 0px;
+      position: absolute;
+      z-index: 1;
+    button{
+          display: block;
+      visibility: visible;
+      opacity: 1;
+          width: 280px;
+          background-color: red;
+          height: 20px;
+        }
+      }
+
+
+    .burger{
+      display: block;
+    }
+    .header-container{
+      padding-right: 18px;
+    }
+    .button-container{
+      display: none;
+    }
+    .logo{
+      display: none;
+    }
+    .header-auth-buttons{
+      display: none;
+    }
+  }
+
 }

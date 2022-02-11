@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchTasks} from "../../redux/actions/taskActionCreator";
 import {useNavigate} from "react-router";
 import "./Sidebar.scss";
 import {ReactComponent as ReactLogo} from "../../assets/images/logo.svg"
@@ -19,6 +20,7 @@ import {ReactComponent as BurgerMenu} from "../../assets/images/burger.svg";
 
 const Sidebar = (props) => {
 
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const [hideTagInput, setHideTagInput] = useState(false)
@@ -43,7 +45,7 @@ const Sidebar = (props) => {
     };
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
-            <div>
+            <div className={props.openSidebar ?  'sidebar-wrap active' : 'sidebar-wrap'}>
                 <BurgerMenu className='burger' onClick={handleClick}/>
                 <div className={props.openSidebar ?  'sidebar active' : 'sidebar'}>
             <div className="logo">
@@ -61,6 +63,7 @@ const Sidebar = (props) => {
                         </label>
                     </div>
                     <ul className="category-items">
+                        <li onClick={() => dispatch(fetchTasks())} className='tag-wrap'>ALL</li>
                         {<UserCategories
                             setHideCategoryInput={setHideCategoryInput}
                             hideCategoryInput={hideCategoryInput}
@@ -76,6 +79,7 @@ const Sidebar = (props) => {
                         </div>
                     </label>
                     <ul className='tags-list'>
+                        <li onClick={() => dispatch(fetchTasks())} className='tag-wrap'>ALL</li>
                         {<UserTags
                             setHideTagInput={setHideTagInput}
                             hideTagInput={hideTagInput}
@@ -85,7 +89,7 @@ const Sidebar = (props) => {
             </div>
             <div className="profile">
                 <Badge color="secondary" overlap="circular" badgeContent=" " variant="dot">
-                    {userInfo.photo === ''
+                    {userInfo.photo === null
                         ? <div className='profile-without-photo'><span>{userInfo.first_name !== undefined && userInfo.first_name[0]} {userInfo.last_name !== undefined && userInfo.last_name[0]}</span></div>
                         : <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
                     }
@@ -96,7 +100,7 @@ const Sidebar = (props) => {
                 <div className='profile-box'>
                     <div className='profile-box-account'>
                         <div className='profile-box-img'>
-                            {userInfo.photo === ''
+                            {userInfo.photo === null
                                 ? <div className='profile-without-photo'><span>{userInfo.first_name !== undefined && userInfo.first_name[0]} {userInfo.last_name !== undefined && userInfo.last_name[0]}</span></div>
                                 : <img src={man} style={{width: '44px', height:'44px', borderRadius: '50%'}} alt=""/>
                             }

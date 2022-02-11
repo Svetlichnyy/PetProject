@@ -41,9 +41,23 @@
   }
 
   .button-group {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 22px;
+    height: 43px;
+    background: #03A0E8;
+    border-radius: 10px;
+    white-space: nowrap;
     padding-right: 44px;
     position: relative;
     width: 170px;
+  }
+  .button-group:hover{
+      background: #0098DE;
+      cursor: pointer;
   }
 
   .button-group:after {
@@ -57,7 +71,7 @@
   }
 }
 
-@media screen and (max-width: 1020px){
+@media screen and (max-width: 1350px){
   .groupList{
     margin: 0 15px 0 15px;
   }

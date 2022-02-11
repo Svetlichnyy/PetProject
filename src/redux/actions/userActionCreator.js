@@ -1,5 +1,6 @@
 import axiosApi from '../../axios/api';
 import { SET_USER } from "./actions";
+import {setError, setSuccess} from "./alertsActionCreator";
 
 const userId = localStorage.getItem('userId')
 
@@ -9,6 +10,7 @@ export function fetchUserInfo() {
             const response = await axiosApi.get(`/user_info/${userId}`)
             dispatch(setUserInfo(response.data));
         } catch (err) {
+            dispatch(setError(true))
             console.log(err);
         }
     };
@@ -41,8 +43,10 @@ export function editUser(userInfo, userData){
             }
             setUserInfo(newList);
             dispatch(setUserInfo(newList));
+            dispatch(setSuccess(true))
         }
         catch(err){
+            dispatch(setError(true))
             console.log(err)
             console.log('Error in editing user')
         }
@@ -50,15 +54,17 @@ export function editUser(userInfo, userData){
 }
 
 export function editPassword(userPassword){
-    return async () => {
+    return async (dispatch) => {
         try {
             const response = await axiosApi.put(`/user_info/${userId}/change_password`, {
                 currentPassword: userPassword.currentPassword,
                 newPassword: userPassword.newPassword,
                 confirmPassword: userPassword.confirmPassword
             })
+            dispatch(setSuccess(true))
         }
         catch(err){
+            dispatch(setError(true))
             console.log(err)
             console.log('Error in editing user')
         }

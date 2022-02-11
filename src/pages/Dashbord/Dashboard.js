@@ -8,6 +8,7 @@ import TaskDetails from "../../components/TaskDelails/TaskDetails";
 import Error from "../../components/modals/Error/Error";
 import GroupList from "../../components/GroupList/GroupList";
 import {ReactComponent as SmallLogo} from "../../assets/images/TabletLogo.svg";
+import Success from "../../components/modals/Success/Success";
 
 
 const Dashboard = () => {
@@ -21,6 +22,8 @@ const Dashboard = () => {
 
     return (
         <div className='dashboard'>
+            <Error/>
+            <Success/>
             <div className="header-menu">
                 <div/>
                 <SmallLogo className="small-logo"/>

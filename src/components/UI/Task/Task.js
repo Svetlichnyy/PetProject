@@ -3,9 +3,10 @@ import './Task.scss';
 import { Checkbox } from "@mui/material";
 import CircleIcon from '@mui/icons-material/Circle';
 import { useDispatch } from "react-redux";
-import { saveId } from "../../../redux/actions/taskActionCreator";
+import {fetchTasks, saveId } from "../../../redux/actions/taskActionCreator";
 import NormalTime from "../../../NormalTime";
 import {useDrag} from "react-dnd";
+import axiosApi from "../../../axios/api";
 
 const Task = ({ title, id, tagsTitleArray, categoryTitle, priorityColor, done, openAside, setOpenAside, notification,groupId,description,deadline }) => {
     const [{isDragging}, drag] = useDrag(() => ({
@@ -31,6 +32,15 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, priorityColor, done, o
     const makeDone = (e) => {
         setOpenAside(openAside)
     }
+    const editCheck = async () =>{
+        try{
+            const response = await axiosApi.put(`/task/${id}/done`, {
+                done: !done})
+        } catch(err){
+            console.log(err)
+        }
+        dispatch(fetchTasks())
+    }
     return (
         <div style={{opacity: isDragging ? "0": "1"}}
              ref={drag}>
@@ -40,7 +50,9 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, priorityColor, done, o
                 className={done ? 'task task-done' : 'task'}
             >
             <div className='task-group'>
-                <Checkbox
+
+                <div className='task-name'><Checkbox
+                    onClick={editCheck}
                     checked={done}
                     color='primary'
                     icon={<CircleIcon style={{
@@ -59,13 +71,14 @@ const Task = ({ title, id, tagsTitleArray, categoryTitle, priorityColor, done, o
                     }}/>}
                     onChange={ makeDone}
                 >
-                </Checkbox>
-                <div className='task-name'>{title}</div>
-                <div className='task-date'><span>{NormalTime(notification)}</span></div>
-                <div className='task-category'>
-                    {categoryTitle}
+                </Checkbox>{title}</div>
+                <div className="more-info">
+                    <div className='task-date'><span>{NormalTime(notification)}</span></div>
+                    <div className='task-category'>
+                        {categoryTitle}
+                    </div>
+                    <div className='task-tags'>{tagsTitleArray}</div>
                 </div>
-                <div className='task-tags'>{tagsTitleArray}</div>
             </div>
             <div className='task-priority'>
                 {

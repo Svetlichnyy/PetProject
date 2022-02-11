@@ -5,6 +5,7 @@ import {fetchGroups} from "../../../redux/actions/groupActionCreator";
 import "./CreateGroup.scss"
 import {Box} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import {setError, setSuccess} from "../../../redux/actions/alertsActionCreator";
 
 const CreateGroup = (props) => {
 
@@ -12,14 +13,17 @@ const CreateGroup = (props) => {
 
     const dispatch = useDispatch()
 
+
     const addGroup = async () =>{
         try{
             const response = await axiosApi.post('/group', {
                 title: groupName,
             })
+            dispatch(setSuccess(true))
         } catch(err){
+            dispatch(setError(true))
             console.log(err)
-            console.log('Error in posting Task')
+            console.log('Error in posting group')
         }
         dispatch(fetchGroups())
     }

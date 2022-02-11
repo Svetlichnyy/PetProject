@@ -1,5 +1,6 @@
 import axiosApi from '../../axios/api';
 import {SAVE_ID_GROUP, SET_GROUP} from "./actions";
+import {setError, setSuccess} from "./alertsActionCreator";
 
 export function fetchGroups() {
     return async (dispatch) => {
@@ -7,15 +8,16 @@ export function fetchGroups() {
             const response = await axiosApi.get('/group');
             dispatch(setGroups(response.data));
         } catch (err) {
+            dispatch(setError(true))
             console.log(err);
         }
     };
 }
 
-export function setGroups(tags) {
+export function setGroups(group) {
     return {
         type: SET_GROUP,
-        payload: tags
+        payload: group
     }
 }
 
@@ -43,10 +45,12 @@ export function editGroup(groupId,groupList,groupData){
             })
             setGroups(newList);
             dispatch(setGroups(newList));
+            dispatch(setSuccess(true))
         }
         catch(err){
             console.log(err)
-            console.log('Error in editing Task')
+            dispatch(setError(true))
+            console.log('Error in editing group')
         }
     }
 }
@@ -58,8 +62,10 @@ export function deleteGroup(groupId,groupList){
             const newGroupList = groupList.filter((task) => task.id !== groupId);
             setGroups(newGroupList);
             dispatch(setGroups(newGroupList));
+            dispatch(setSuccess(true))
         }
         catch(err){
+            dispatch(setError(true))
             console.log(err)
             console.log('Error in deleting group')
         }

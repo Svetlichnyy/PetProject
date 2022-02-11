@@ -6,9 +6,13 @@ import {Box} from "@mui/material";
 import man from "../../../assets/images/modal-laptop-man.svg";
 import './Form.scss'
 import axios from "axios";
+import {setError} from "../../../redux/actions/alertsActionCreator";
+import {useDispatch} from "react-redux";
 
 
 const Form = ({children, ...props}) => {
+
+    const dispatch = useDispatch()
 
     const [page, setPage] = useState(0);
 
@@ -18,7 +22,7 @@ const Form = ({children, ...props}) => {
 
     const PageDisplay = () => {
         if (page === 0) {
-            return <Registration formData={formData} setFormData={setFormData} page={setPage}/>
+            return <Registration setOpenForm={props.setOpenForm} setOpenLogin={props.setOpenLogin} formData={formData} setFormData={setFormData} page={setPage}/>
         }
         if (page === 1) {
             return <AlmostDone formData={formData} setFormData={setFormData} page={setPage}/>
@@ -41,6 +45,7 @@ const Form = ({children, ...props}) => {
             const response = await axios.post('https://young-brushlands-01487.herokuapp.com/api/user/registration', formData)
             console.log(response)
         } catch (err) {
+            dispatch(setError(true))
             console.log('ERROR in REGISTRATION')
         }
     }

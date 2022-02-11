@@ -162,12 +162,12 @@ const TaskList = (props) => {
                 title={item.title}
                 description={item.description}
                 id={item.id}
-                tagsTitleArray={item.tags.map(item => item.title)}
+                tagsTitleArray={item.tags.map(item => '#'+item.title)}
                 notificationTime={item.notificationTime}
                 deadline={item.deadline.toLocaleString()}
                 categoryTitle={item.category.title}
                 priorityColor={item.priority.color}
-                done={item.done}
+                done={item.is_done}
                 notification={item.remind_in}
                 groupId={item.groupId}
                 />}

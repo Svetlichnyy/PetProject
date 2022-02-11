@@ -1,5 +1,6 @@
 import axiosApi from '../../axios/api';
 import { SAVE_ID, SET_TODOS } from "./actions";
+import {setError, setSuccess} from "./alertsActionCreator";
 
 export function fetchTasks() {
   return async (dispatch) => {
@@ -7,6 +8,7 @@ export function fetchTasks() {
       const response = await axiosApi.get('/task')
       dispatch(setUserTasks(response.data));
     } catch (err) {
+      dispatch(setError(true))
       console.log(err);
     }
   };
@@ -25,8 +27,10 @@ export function deleteTask(todoId,taskList){
       const newTodoList = taskList.filter((task) => task.id !== todoId);
       setUserTasks(newTodoList);
       dispatch(setUserTasks(newTodoList));
+      dispatch(setSuccess(true))
     }
     catch(err){
+      dispatch(setError(true))
       console.log(err)
       console.log('Error in deleting task')
     }
@@ -57,6 +61,7 @@ export function sortTasks(title, date, sort,category,tag) {
         dispatch(setUserTasks(response.data));
       }
     } catch (err) {
+      dispatch(setError(true))
       console.log(err);
     }
   };
@@ -101,8 +106,10 @@ export function editTask(todoId,todoList,ToDoData){
         return item;
       })
       dispatch(setUserTasks(newList));
+      dispatch(setSuccess(true))
     }
     catch(err){
+      dispatch(setError(true))
       console.log(err)
       console.log('Error in editing Task')
     }

@@ -4,43 +4,104 @@
     margin: 0;
     padding: 0;
 }
-
-.main-container{
+::-webkit-scrollbar {
+    width: 0;
+}
+.main-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vW;
     height: 89vH;
+
+    h1 {
+        font-family: "Circe ExtraBold", sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 74px;
+        line-height: 74px;
+        color: #000850;
+    }
+
+    .main-image {
+        width: 50vW;
+        overflow: visible;
+    }
+
+    .main-phrase span {
+        font-family: "Circe ExtraBold", sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 74px;
+        line-height: 74px;
+        color: #E44233;
+    }
+
+    .larger-button {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 27px;
+        color: #FFFFFF;
+        border: none;
+        padding: 8px 22px;
+        height: 43px;
+        background: #03A0E8;
+        border-radius: 10px;
+        white-space: nowrap;
+    }
 }
-h1{
-    font-family: "Circe ExtraBold", sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 74px;
-    line-height: 74px;
-    color: #000850;
+@media screen and (max-width: 1000px){
+    .main-container{
+         flex-direction: column;
+        overflow: visible;
+        .main-phrase{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .larger-button{
+                margin-top: 30px;
+            }
+        }
+        .main-image{
+            overflow: visible;
+            z-index: -1;
+            margin-left: -400px;
+            .image{
+                margin-top: 0;
+                left: 5vW;
+                position: absolute;
+                overflow: visible;
+                width: 90vw;
+            }
+        }
+     }
+
 }
-.main-image{
-    width: 50vW;
-    overflow: visible;
-}
-.main-phrase span{
-    font-family: "Circe ExtraBold", sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 74px;
-    line-height: 74px;
-    color: #E44233;
-}
-.larger-button{
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    color: #FFFFFF;
-    border: none;
-    padding: 8px 22px;
-    height: 43px;
-    background: #03A0E8;
-    border-radius: 10px;
-    white-space: nowrap;
+@media screen and (max-width: 1000px){
+    .main-container{
+        justify-content: flex-start;
+        .main-phrase{
+            display: flex;
+            flex-direction: column;
+            font-weight: 800;
+            font-size: 60px;
+            line-height: 58px;
+            h1{
+                font-size: 60px;
+                line-height: 58px;
+            }
+            span{
+                font-size: 60px;
+                line-height: 58px;
+            }
+        }
+        .image {
+            left: 5vW;
+            position: absolute;
+            overflow: hidden;
+            width: 120vw;
+            margin-top: -190px;
+        }
+    }
+
 }

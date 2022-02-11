@@ -5,11 +5,13 @@ import taskReducer from './taskReducer'
 import categoryReducer from './categoryReducer'
 import groupReducer from "./groupReducer";
 import userReducer from "./userReducer";
+import alertsReducer from "./alertsReducer";
 
 export default combineReducers({
   userTag: tagReducer,
   tasks: taskReducer,
   userCategories: categoryReducer,
   groups: groupReducer,
-  userInfo: userReducer
+  userInfo: userReducer,
+  alerts: alertsReducer
 })

@@ -5,9 +5,12 @@ import man from "../../../assets/images/modal-laptop-man.svg";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import {setError} from "../../../redux/actions/alertsActionCreator";
+import {useDispatch} from "react-redux";
 
-const Form = ({children, setOpenLogin}) => {
+const Form = ({children, setOpenLogin, setOpenForm}) => {
 
+    const dispatch = useDispatch()
     const { formState:{errors}, handleSubmit} = useForm({mode: 'onBlur'});
     const onSubmit = () =>{
         loginProfile()
@@ -27,6 +30,7 @@ const Form = ({children, setOpenLogin}) => {
             console.log(localStorage.getItem('userId'))
             navigate('/')
         } catch (err) {
+            dispatch(setError(true))
             console.log('ERROR in LOGIN')
         }
     }
@@ -52,7 +56,15 @@ const Form = ({children, setOpenLogin}) => {
                     <div className='body'>
                         <form onSubmit={handleSubmit(onSubmit)} action="#">
                             <div className='form-message'>
-                                Don't have an account <span>Check in</span>
+                                Don't have an account? {''}
+                                <span
+                                    onClick={() => {
+                                        setOpenForm(true)
+                                        setOpenLogin(false)
+                                    }}
+                                    style={{cursor:'pointer'}}>
+                                    Check in
+                                </span>
                             </div>
                             <div>
                                 <div className='login-email'>

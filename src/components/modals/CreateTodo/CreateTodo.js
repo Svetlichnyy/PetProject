@@ -13,6 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {useDispatch, useSelector} from "react-redux";
 import axiosApi from "../../../axios/api";
+import {setError, setSuccess} from "../../../redux/actions/alertsActionCreator";
 
 const CreateTodo = (props) => {
     const userTags = useSelector((state) => state.userTag.tags)
@@ -38,7 +39,9 @@ const CreateTodo = (props) => {
                 deadline: convertDate(value.toLocaleString()),
                 categoryTitle: category,
                 priorityColor: priority})
+            dispatch(setSuccess(true))
         } catch(err){
+            dispatch(setError(true))
             console.log(err)
             console.log('Error in posting Task')
         }
@@ -90,7 +93,7 @@ const CreateTodo = (props) => {
                                 <span className='form-email-label'>Task Name</span>
                             </label>
                         </div>
-                        <div>
+                        <div className='tags'>
                             <FormControl fullWidth>
                                 <label className='tags-title'>Add tags</label>
                                 <Select
@@ -196,7 +199,7 @@ const CreateTodo = (props) => {
                             <label className='form-email'>
                                 <Box sx={{ minWidth: 120 }}>
                                     <FormControl fullWidth>
-                                        <InputLabel className="all-labels " id="category-label">Set Color Priority</InputLabel>
+                                        <InputLabel  className="all-labels " id="category-label">Set Color Priority</InputLabel>
                                         <Select
                                             labelId="category-label"
                                             id="category-label-select"

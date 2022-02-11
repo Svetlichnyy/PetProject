@@ -14,6 +14,7 @@
   justify-content: center;
   align-items: center;
   .error {
+    position: relative;
     overflow: hidden;
     width: 846px;
     height: 408px;
@@ -43,7 +44,7 @@
         left: -2px;
       }
       .image{
-        background: url("../../../assets/images/error 1.png") no-repeat center center;
+        background: url("../../../assets/images/error.svg") no-repeat center center;
         height: 408px;
         width: 390px;
       }
@@ -76,4 +77,57 @@
     }
   }
 
+}
+@media screen and (max-width: 1350px){
+  .error-wrap{
+    .error{
+      height: 574px;
+      width: 514px;
+      flex-direction: column-reverse;
+    }
+  }
+}
+@media screen and (max-width: 600px){
+  .error-wrap{
+    .error{
+      .error-text{
+        height: 138px;
+        width: 295px;
+        padding-left: 0;
+        justify-content: space-between;
+        flex-direction: column;
+        h3 {
+          word-break: break-word;
+          padding-left: 15px;
+          font-weight: 800;
+          font-size: 24px;
+          line-height: 99.9%;
+          text-align: center;
+          color: #000850;
+        }
+        span{
+          text-align: center;
+        }
+      }
+      display: flex;
+      height: 419px;
+      width: 335px;
+      .error-image{
+        overflow: hidden;
+        margin: 20px;
+        width: 295px;
+        height: 163px;
+        border-radius: 10px;
+        span{
+          display: none;
+        }
+        .image{
+
+          width: 295px;
+          height: 295px;
+          background: url("../../../assets/images/error-on-phone.png");
+        }
+      }
+    }
+  }
 }

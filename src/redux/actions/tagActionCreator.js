@@ -1,5 +1,6 @@
 import axiosApi from '../../axios/api';
 import { SET_TAGS } from "./actions";
+import {setError} from "./alertsActionCreator";
 
 export function fetchTags() {
   return async (dispatch) => {
@@ -7,6 +8,7 @@ export function fetchTags() {
       const response = await axiosApi.get('/tag');
       dispatch(setUserTags(response.data));
     } catch (err) {
+      dispatch(setError(true))
       console.log(err);
     }
   };

@@ -9,14 +9,14 @@ import {useNavigate} from "react-router";
 
 
 const Homepage = () => {
+    const navigate = useNavigate()
+    const [open, setOpen] = useState(false);
     useEffect(()=>{
-       const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token')
         if (token){
             navigate('/')
         }
-    },[])
-    const navigate = useNavigate()
-    const [open, setOpen] = useState(false);
+    },[open])
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -45,7 +45,7 @@ const Homepage = () => {
                     </Modal>
                 </div>
                 <div className="main-image">
-                    <ReactImage/>
+                    <ReactImage className='image'/>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import axiosApi from '../../axios/api';
 import { SET_CATEGORIES } from "./actions";
+import {setError} from "./alertsActionCreator";
 
 export function fetchCategories() {
     return async (dispatch) => {
@@ -7,6 +8,7 @@ export function fetchCategories() {
             const response = await axiosApi.get('/category');
             dispatch(setUserCategories(response.data));
         } catch (err) {
+            dispatch(setError(true))
             console.log(err);
         }
     };

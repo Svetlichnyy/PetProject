@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {fetchCategories, setUserCategories} from "../../redux/actions/categoryActionCreator";
 import { useSelector, useDispatch } from 'react-redux'
 import axiosApi from '../../axios/api'
 import Category from "./Category";
-import {fetchTags} from "../../redux/actions/tagActionCreator";
-// import Error from "../../components/modals/Error";
-
+import {setError} from "../../redux/actions/alertsActionCreator";
 const UserCategories = (props) => {
 
     const hide = () => props.setHideCategoryInput(false)
@@ -24,6 +22,7 @@ const UserCategories = (props) => {
                     dispatch(setUserCategories([...userCategories, response.data]))
                     // console.log(response.data)
                 } catch (err) {
+                    dispatch(setError(true))
                     console.log('ERROR in posting Category data')
                 }
 
@@ -41,6 +40,7 @@ const UserCategories = (props) => {
             console.log(response)
         }
         catch(err){
+            dispatch(setError(true))
             console.log('Error in editing Category')
         }
     }
@@ -51,6 +51,7 @@ const UserCategories = (props) => {
             console.log(response)
         }
         catch (err) {
+            dispatch(setError(true))
             console.log(err);
             console.log('Error in deleting Category')
         }

@@ -107,6 +107,7 @@ const EditTodo = (props) => {
                                         <FormControl fullWidth>
                                             <InputLabel className='label-notification all-labels' id="time-label">Notification</InputLabel>
                                             <Select
+                                                onClick={(e)=> e.preventDefault()}
                                                 labelId="time-label"
                                                 id="category-label-select"
                                                 value={time}

@@ -8,7 +8,7 @@ import { ReactComponent as BellOffIcon } from "../../assets/images/bxs-bell-ring
 import EditTodo from "../modals/EditTodo/EditTodo";
 import { Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import {deleteTask, setUserTasks} from "../../redux/actions/taskActionCreator";
+import {deleteTask} from "../../redux/actions/taskActionCreator";
 import NormalTime from "../../NormalTime";
 
 const TaskDetails = (props) => {
@@ -39,6 +39,8 @@ const TaskDetails = (props) => {
         dispatch(deleteTask(todoId,todoList));
         props.setOpenAside(false);
     }
+
+
     return (
         <div className={props.openAside ? 'aside active' : 'aside'}>
             <div className="header">
@@ -116,8 +118,6 @@ const TaskDetails = (props) => {
                     <Modal
                         open={open}
                         onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
                     >
                         <>
                             <EditTodo currentTask={[currentTask]} setOpen={setOpen}>
@@ -125,10 +125,10 @@ const TaskDetails = (props) => {
                             </EditTodo>
                         </>
                     </Modal>
-
                 </div>
             </div>
         </div>
+
     );
 };
 

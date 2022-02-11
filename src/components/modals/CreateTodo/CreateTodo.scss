@@ -104,45 +104,6 @@
     width: 396px;
     height: 50px;
   }
-
-  //.tag-container-title{
-  //  background-color: #fff;
-  //  padding: 0 10px;
-  //  color: #6F7D97;
-  //  font-size: 12px;
-  //  position: absolute;
-  //  left: 80px;
-  //  top: 240px;
-  //}
-  //.tag-container{
-  //  width: 396px;
-  //  height: 50px;
-  //  display: flex;
-  //  flex-wrap: wrap;
-  //  border: 1px solid #d7d7d7;
-  //  border-radius: 10px;
-  //  padding: 10px;
-  //  font-size: 20px;
-  //  overflow: scroll;
-  //  scroll-behavior: smooth;
-  //  scroll-snap-type: x mandatory;
-  //}
-  //.tag {
-  //  display: flex;
-  //  align-items: center;
-  //  padding: 5px;
-  //  height: 30px;
-  //  margin: 2px 5px 2px 0;
-  //}
-  //
-  //.tag-container input {
-  //  border: none;
-  //  flex: 1;
-  //  outline: none;
-  //  font-size: 20px;
-  //  min-width: 15px;
-  //}
-
   ::-webkit-scrollbar {
     display: none;
   }
@@ -175,6 +136,7 @@
     border-radius: 10px;
     margin: 0 12px 0 0;
     background: transparent;
+    cursor: pointer;
   }
   .form-prev-todo:before{
     content: '<';
@@ -182,6 +144,7 @@
     position: absolute;
     left:17px;
     top: 12px;
+
   }
   .form-prev-todo:hover{
     background: transparent;
@@ -203,14 +166,19 @@
     font-size: 18px;
     line-height: 27px;
     color: #FFFFFF;
+    cursor: pointer;
   }
   .form-next-todo:after{
     content: '+';
     font-weight: normal;
     font-size: 30px;
     position: absolute;
-    right: 22px;
-    top: 13px;
+    right: 12px;
+    top: 14px;
+  }
+  .form-next-todo:hover{
+    background: #0098DE;
+    cursor: pointer;
   }
   .footer{
     margin-left: 580px;
@@ -243,5 +211,98 @@
   }
   .tag{
     display: flex;
+  }
+}
+@media screen and (max-width: 990px){
+    .create-todo{
+      .MuiOutlinedInput-root{
+        width: 100%;
+      }
+      .form-box{
+        height: 1010px;
+        width: 708px;
+      }
+      .input-container{
+        flex-wrap: nowrap;
+        width: 100%;
+      .login-email{
+        width: 100%;
+        .MuiOutlinedInput-root{
+          width: 100%;
+        }
+        .MuiFormControl-root{
+          width: 100%;
+          .MuiOutlinedInput-root{
+            width: 100%;
+          }
+        }
+        .tags{
+          width: 100%;
+          .MuiFormControl-root{
+            width: 100%;
+            .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+              width: 100%;
+            }
+          }
+        }
+        input{
+          width: 100%;
+        }
+        }
+      }
+      .form{
+        height: 100%;
+        width: 100%;
+      }
+      .description-container{
+        margin-top: 185px;
+        width: 80%;
+      .form-description-input{
+        width: 125%;
+      }
+      }
+     .footer {
+       margin-left: 340px;
+      }
+  }
+}
+@media screen and (max-width: 750px){
+  .create-todo{
+    .header{
+      margin-top: 6px;
+    }
+    .login-email{
+      padding: 0;
+      margin: 14px 0;
+    }
+    .tags{
+      padding: 0;
+      margin: 14px 0;
+    }
+    .form{
+      padding: 20px;
+    }
+    .form-box{
+      width: 335px;
+      height: 867px;
+    }
+    .description-container {
+      margin-top: 235px;
+      margin-bottom: 14px;
+      width: 80%;
+    }
+    .footer{
+      margin: 0;
+      .form-prev-todo{
+        display: none;
+      }
+      .form-next-todo{
+        width: 295px;
+        height: 43px;
+      }
+      .main-button::after{
+        display: none;
+      }
+    }
   }
 }
